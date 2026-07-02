@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IA Productiva · Recupera horas de trabajo con IA para tu pyme</title>
+  <meta name="description" content="Programa de IA para pymes bonificable por FUNDAE. No vendemos un curso: entregamos horas recuperadas cada mes, medidas tarea a tarea, con un informe que lo demuestra." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#FBF9F4',
+            bone: '#F4F0E7',
+            ink: '#1C1B19',
+            coral: '#E4572E',
+            coraldk: '#C6431F',
+            muted: '#6B665E',
+            line: '#E4DDD968',
+          },
+          fontFamily: {
+            serif: ['Fraunces', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: #FBF9F4; }
+    /* Offset para que la barra fija no tape el título de cada sección al navegar */
+    section[id] { scroll-margin-top: 4.5rem; }
+    /* Pestaña activa */
+    .nav-link.active { color: #1C1B19; }
+    .nav-link.active::after { transform: scaleX(1); }
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px;
+      background: #E4572E; transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
+    }
+    .nav-link:hover::after { transform: scaleX(1); }
+    .fade-up { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+    .fade-up.in { opacity: 1; transform: none; }
+    ::selection { background: #E4572E; color: #fff; }
+  </style>
+</head>
+<body class="font-sans text-ink antialiased">
+
+  <!-- ============ NAV ============ -->
+  <header class="sticky top-0 z-50 bg-cream/85 backdrop-blur-md border-b border-line">
+    <div class="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2">
+        <span class="inline-block h-2.5 w-2.5 rounded-full bg-coral"></span>
+        <span class="font-serif text-lg font-600 tracking-tight">IA&nbsp;Productiva</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm text-muted">
+        <a href="#resultados" class="nav-link hover:text-ink transition">Resultados</a>
+        <a href="#metodo" class="nav-link hover:text-ink transition">Cómo se mide</a>
+        <a href="#programas" class="nav-link hover:text-ink transition">Programas</a>
+        <a href="#fundae" class="nav-link hover:text-ink transition">FUNDAE</a>
+      </nav>
+      <a href="#contacto" class="rounded-full bg-coral px-5 py-2 text-sm font-600 text-white hover:bg-coraldk transition">Reservar llamada</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="relative overflow-hidden">
+      <div class="mx-auto max-w-6xl px-6 pt-20 pb-16 md:pt-28 md:pb-24">
+        <p class="text-xs font-600 uppercase tracking-[0.2em] text-coral mb-6">Programa para pymes · 2026 · Bonificable FUNDAE</p>
+        <h1 class="font-serif text-4xl leading-[1.05] sm:text-5xl md:text-6xl font-600 max-w-4xl">
+          Recupera horas de trabajo con IA —<br class="hidden sm:block" />
+          <span class="text-coral">y te lo demostramos con un informe.</span>
+        </h1>
+        <p class="mt-7 max-w-2xl text-lg leading-relaxed text-muted">
+          Tu equipo no necesita "saber de IA". Necesita sacar el trabajo en menos tiempo y con menos
+          errores. No vendemos un curso: entregamos <strong class="text-ink font-600">horas recuperadas cada mes</strong>,
+          medidas tarea a tarea y persona a persona.
+        </p>
+        <div class="mt-9 flex flex-col sm:flex-row gap-3 sm:items-center">
+          <a href="#contacto" class="rounded-full bg-coral px-7 py-3.5 text-center font-600 text-white hover:bg-coraldk transition shadow-sm">
+            Reservar llamada de 30 min
+          </a>
+          <a href="#programas" class="rounded-full border border-ink/15 px-7 py-3.5 text-center font-600 text-ink hover:bg-bone transition">
+            Ver los programas
+          </a>
+        </div>
+        <p class="mt-4 text-sm text-muted">Sin compromiso · Calculamos tu crédito FUNDAE disponible en la primera llamada.</p>
+
+        <!-- fact strip -->
+        <div class="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-4">
+          <div class="bg-cream p-5">
+            <div class="font-serif text-2xl font-600">8 semanas</div>
+            <div class="mt-1 text-sm text-muted">del diagnóstico al informe</div>
+          </div>
+          <div class="bg-cream p-5">
+            <div class="font-serif text-2xl font-600">16–20 h</div>
+            <div class="mt-1 text-sm text-muted">formación en aula virtual</div>
+          </div>
+          <div class="bg-cream p-5">
+            <div class="font-serif text-2xl font-600">1–3</div>
+            <div class="mt-1 text-sm text-muted">automatizaciones implantadas</div>
+          </div>
+          <div class="bg-cream p-5">
+            <div class="font-serif text-2xl font-600">FUNDAE</div>
+            <div class="mt-1 text-sm text-muted">gestión completa incluida</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROBLEMA / PROMESA ============ -->
+    <section class="border-y border-line bg-bone">
+      <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+        <div class="grid gap-10 md:grid-cols-2 md:gap-16 items-center">
+          <div>
+            <h2 class="font-serif text-3xl md:text-4xl font-600 leading-tight">
+              La inteligencia artificial es el medio.<br />
+              <span class="text-coral">El resultado es el producto.</span>
+            </h2>
+          </div>
+          <div class="space-y-5 text-lg text-muted leading-relaxed">
+            <p>Cada persona elige una tarea que repite a menudo. Se cronometra antes y después.
+              El ahorro <strong class="text-ink font-600">se mide — no se estima</strong>.</p>
+            <p>Lo aburrido y repetitivo deja de hacerse a mano. Menos correcciones, menos retrabajos,
+              menos sustos. Y al acabar, el equipo no depende de nadie.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RESULTADOS ============ -->
+    <section id="resultados" class="mx-auto max-w-6xl px-6 py-20 md:py-28">
+      <div class="max-w-2xl">
+        <p class="text-xs font-600 uppercase tracking-[0.2em] text-coral mb-3">Lo que se lleva tu empresa</p>
+        <h2 class="font-serif text-3xl md:text-4xl font-600 leading-tight">Resultados medidos, no promesas</h2>
+        <p class="mt-4 text-lg text-muted">El programa se contrata por los resultados y se cierra con un informe de horas recuperadas.</p>
+      </div>
+
+      <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- card -->
+        <div class="fade-up group rounded-2xl border border-line bg-cream p-7 hover:shadow-lg hover:shadow-ink/5 transition">
+          <div class="mb-4 h-1 w-10 rounded-full bg-coral"></div>
+          <h3 class="font-serif text-xl font-600">Horas recuperadas</h3>
+          <p class="mt-2 text-muted leading-relaxed">Se cronometra antes y después. El ahorro se mide tarea a tarea, no se promete.</p>
+        </div>
+        <div class="fade-up group rounded-2xl border border-line bg-cream p-7 hover:shadow-lg hover:shadow-ink/5 transition">
+          <div class="mb-4 h-1 w-10 rounded-full bg-coral"></div>
+          <h3 class="font-serif text-xl font-600">Tareas repetitivas, fuera</h3>
+          <p class="mt-2 text-muted leading-relaxed">Implantamos entre 1 y 3 automatizaciones reales sobre vuestros propios procesos.</p>
+        </div>
+        <div class="fade-up group rounded-2xl border border-line bg-cream p-7 hover:shadow-lg hover:shadow-ink/5 transition">
+          <div class="mb-4 h-1 w-10 rounded-full bg-coral"></div>
+          <h3 class="font-serif text-xl font-600">Menos errores administrativos</h3>
+          <p class="mt-2 text-muted leading-relaxed">Plantillas, verificación y flujos con revisión: menos correcciones y retrabajos.</p>
+        </div>
+        <div class="fade-up group rounded-2xl border border-line bg-cream p-7 hover:shadow-lg hover:shadow-ink/5 transition">
+          <div class="mb-4 h-1 w-10 rounded-full bg-coral"></div>
+          <h3 class="font-serif text-xl font-600">Productividad por persona</h3>
+          <p class="mt-2 text-muted leading-relaxed">Herramientas por rol —ventas, administración, operaciones, marketing— sobre vuestro ERP, CRM y correo.</p>
+        </div>
+        <div class="fade-up group rounded-2xl border border-line bg-cream p-7 hover:shadow-lg hover:shadow-ink/5 transition">
+          <div class="mb-4 h-1 w-10 rounded-full bg-coral"></div>
+          <h3 class="font-serif text-xl font-600">Coste optimizado</h3>
+          <p class="mt-2 text-muted leading-relaxed">La formación se bonifica vía FUNDAE y el ahorro en horas paga el resto del programa.</p>
+        </div>
+        <div class="fade-up group rounded-2xl border border-line bg-cream p-7 hover:shadow-lg hover:shadow-ink/5 transition">
+          <div class="mb-4 h-1 w-10 rounded-full bg-coral"></div>
+          <h3 class="font-serif text-xl font-600">Autonomía del equipo</h3>
+          <p class="mt-2 text-muted leading-relaxed">El equipo sabe usar, adaptar y mantener lo implantado, con criterios de seguridad y RGPD.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MÉTODO / TAREA ANCLA ============ -->
+    <section id="metodo" class="border-y border-line bg-ink text-cream">
+      <div class="mx-auto max-w-6xl px-6 py-20 md:py-28">
+        <div class="max-w-2xl">
+          <p class="text-xs font-600 uppercase tracking-[0.2em] text-coral mb-3">Cómo se miden los resultados</p>
+          <h2 class="font-serif text-3xl md:text-4xl font-600 leading-tight text-cream">El método de la tarea ancla</h2>
+          <p class="mt-4 text-lg text-cream/70">Si al medir no hay ahorro, lo sabremos los dos. Por eso medimos.</p>
+        </div>
+
+        <div class="mt-14 grid gap-8 md:grid-cols-4">
+          <div class="relative">
+            <div class="font-serif text-5xl font-600 text-coral">01</div>
+            <h3 class="mt-3 font-600 text-lg">Línea base</h3>
+            <p class="mt-2 text-cream/60 leading-relaxed text-sm">Cada asistente elige una tarea que repite y cronometra cuánto le cuesta hoy.</p>
+          </div>
+          <div class="relative">
+            <div class="font-serif text-5xl font-600 text-coral">02</div>
+            <h3 class="mt-3 font-600 text-lg">Mejora</h3>
+            <p class="mt-2 text-cream/60 leading-relaxed text-sm">Esa tarea se trabaja durante el programa con plantillas, herramientas y automatización.</p>
+          </div>
+          <div class="relative">
+            <div class="font-serif text-5xl font-600 text-coral">03</div>
+            <h3 class="mt-3 font-600 text-lg">Re-medición</h3>
+            <p class="mt-2 text-cream/60 leading-relaxed text-sm">La misma tarea, cronometrada de nuevo. La diferencia × frecuencia = horas/mes recuperadas.</p>
+          </div>
+          <div class="relative">
+            <div class="font-serif text-5xl font-600 text-coral">04</div>
+            <h3 class="mt-3 font-600 text-lg">Informe final</h3>
+            <p class="mt-2 text-cream/60 leading-relaxed text-sm">Ahorro por persona y equipo, en horas y en euros. El dato que justifica la inversión.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROGRAMAS ============ -->
+    <section id="programas" class="mx-auto max-w-6xl px-6 py-20 md:py-28">
+      <div class="max-w-2xl">
+        <p class="text-xs font-600 uppercase tracking-[0.2em] text-coral mb-3">Dos formas de empezar</p>
+        <h2 class="font-serif text-3xl md:text-4xl font-600 leading-tight">Elige tu punto de entrada</h2>
+        <p class="mt-4 text-lg text-muted">Desde una primera toma de contacto de 8 horas hasta el programa completo con implantación e informe de resultados.</p>
+      </div>
+
+      <div class="mt-12 grid gap-6 lg:grid-cols-2">
+        <!-- Curso 8h -->
+        <div class="flex flex-col rounded-3xl border border-line bg-cream p-8 md:p-10">
+          <p class="text-xs font-600 uppercase tracking-[0.18em] text-muted">Punto de entrada</p>
+          <h3 class="mt-2 font-serif text-2xl md:text-3xl font-600">IA aplicada al trabajo diario</h3>
+          <p class="mt-3 text-muted leading-relaxed">Primeros usos productivos y seguros. Para equipos con perfil no técnico. No hace falta saber nada de IA para empezar.</p>
+          <ul class="mt-6 space-y-3 text-sm">
+            <li class="flex gap-3"><span class="text-coral font-700">·</span> 8 horas · aula virtual en directo</li>
+            <li class="flex gap-3"><span class="text-coral font-700">·</span> Grupos de 8–12 personas · nivel básico</li>
+            <li class="flex gap-3"><span class="text-coral font-700">·</span> 4 módulos con entregable real en cada uno</li>
+            <li class="flex gap-3"><span class="text-coral font-700">·</span> 70 % práctica sobre tareas propias</li>
+            <li class="flex gap-3"><span class="text-coral font-700">·</span> Bonificable al 100 % vía FUNDAE</li>
+          </ul>
+          <div class="mt-8 pt-6 border-t border-line">
+            <a href="#contacto" class="inline-flex items-center gap-2 font-600 text-coral hover:text-coraldk transition">Más información →</a>
+          </div>
+        </div>
+
+        <!-- Programa completo -->
+        <div class="relative flex flex-col rounded-3xl border-2 border-coral bg-cream p-8 md:p-10 shadow-xl shadow-coral/5">
+          <span class="absolute -top-3 left-8 rounded-full bg-coral px-3 py-1 text-xs font-600 text-white">Recomendado</span>
+          <p class="text-xs font-600 uppercase tracking-[0.18em] text-coral">Programa completo</p>
+          <h3 class="mt-2 font-serif text-2xl md:text-3xl font-600">IA Productiva 2026</h3>
+          <p class="mt-3 text-muted leading-relaxed">Oferta cerrada, todo incluido. Del diagnóstico de procesos al informe de horas recuperadas, con automatizaciones funcionando.</p>
+          <ul class="mt-6 space-y-3 text-sm">
+            <li class="flex gap-3"><span class="text-coral font-700">·</span> Diagnóstico inicial de procesos</li>
+            <li class="flex gap-3"><span class="text-coral font-700">·</span> Formación práctica 16–20 h (bonificable)</li>
+            <li class="flex gap-3"><span class="text-coral font-700">·</span> Implantación de 1–3 automatizaciones</li>
+            <li class="flex gap-3"><span class="text-coral font-700">·</span> Soporte y acompañamiento 30 días</li>
+            <li class="flex gap-3"><span class="text-coral font-700">·</span> Gestión completa de la bonificación FUNDAE</li>
+          </ul>
+          <div class="mt-8 pt-6 border-t border-line">
+            <a href="#contacto" class="inline-flex items-center gap-2 rounded-full bg-coral px-6 py-3 font-600 text-white hover:bg-coraldk transition">Reservar llamada</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CÓMO FUNCIONA / TIMELINE ============ -->
+    <section class="border-y border-line bg-bone">
+      <div class="mx-auto max-w-6xl px-6 py-20 md:py-28">
+        <div class="max-w-2xl">
+          <p class="text-xs font-600 uppercase tracking-[0.2em] text-coral mb-3">Cómo funciona</p>
+          <h2 class="font-serif text-3xl md:text-4xl font-600 leading-tight">Ocho semanas, de la foto inicial al informe</h2>
+        </div>
+
+        <div class="mt-12 space-y-px overflow-hidden rounded-2xl border border-line bg-line">
+          <div class="grid gap-1 bg-cream p-6 md:grid-cols-[160px_1fr] md:gap-6 md:p-7">
+            <div class="font-serif text-lg font-600 text-coral">Semana 0</div>
+            <div><span class="font-600">Diagnóstico.</span> <span class="text-muted">Cuestionario de procesos y sesión con responsables. Se comunica la acción a FUNDAE.</span></div>
+          </div>
+          <div class="grid gap-1 bg-cream p-6 md:grid-cols-[160px_1fr] md:gap-6 md:p-7">
+            <div class="font-serif text-lg font-600 text-coral">Semanas 1–4</div>
+            <div><span class="font-600">Formación 16–20 h.</span> <span class="text-muted">4–5 sesiones de aula virtual con práctica entre sesiones. Cada persona fija su línea base.</span></div>
+          </div>
+          <div class="grid gap-1 bg-cream p-6 md:grid-cols-[160px_1fr] md:gap-6 md:p-7">
+            <div class="font-serif text-lg font-600 text-coral">Semanas 3–5</div>
+            <div><span class="font-600">Implantación.</span> <span class="text-muted">Montamos las automatizaciones priorizadas con las personas implicadas.</span></div>
+          </div>
+          <div class="grid gap-1 bg-cream p-6 md:grid-cols-[160px_1fr] md:gap-6 md:p-7">
+            <div class="font-serif text-lg font-600 text-coral">Semanas 5–8</div>
+            <div><span class="font-600">Soporte 30 días.</span> <span class="text-muted">Canal de dudas, ajustes y sesión de seguimiento. Re-medición de las tareas ancla.</span></div>
+          </div>
+          <div class="grid gap-1 bg-cream p-6 md:grid-cols-[160px_1fr] md:gap-6 md:p-7">
+            <div class="font-serif text-lg font-600 text-coral">Semana 8</div>
+            <div><span class="font-600">Informe de resultados.</span> <span class="text-muted">Horas recuperadas por persona y equipo, automatizaciones en marcha y plan de siguientes pasos.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FUNDAE ============ -->
+    <section id="fundae" class="mx-auto max-w-6xl px-6 py-20 md:py-28">
+      <div class="grid gap-12 md:grid-cols-2 md:gap-16 items-start">
+        <div>
+          <p class="text-xs font-600 uppercase tracking-[0.2em] text-coral mb-3">Bonificación FUNDAE</p>
+          <h2 class="font-serif text-3xl md:text-4xl font-600 leading-tight">Tu empresa no toca un papel</h2>
+          <p class="mt-5 text-lg text-muted leading-relaxed">
+            La formación se bonifica a través del crédito de FUNDAE, y nosotros gestionamos todo el
+            proceso: comunicación de la acción, control de asistencia con registros de conexión,
+            custodia de evidencias y documentación.
+          </p>
+          <p class="mt-4 text-lg text-muted leading-relaxed">
+            Calculamos tu crédito disponible sin compromiso en la primera llamada y te entregamos una
+            propuesta con el <strong class="text-ink font-600">coste neto real</strong> para tu empresa.
+          </p>
+        </div>
+        <div class="rounded-3xl border border-line bg-bone p-8">
+          <h3 class="font-serif text-xl font-600">Qué incluye la gestión</h3>
+          <ul class="mt-5 space-y-4 text-sm">
+            <li class="flex gap-3"><span class="mt-0.5 text-coral">✓</span> Comunicación de la acción a FUNDAE en plazo</li>
+            <li class="flex gap-3"><span class="mt-0.5 text-coral">✓</span> Aula virtual con registro de conexiones por alumno</li>
+            <li class="flex gap-3"><span class="mt-0.5 text-coral">✓</span> Control de asistencia y evidencias de evaluación</li>
+            <li class="flex gap-3"><span class="mt-0.5 text-coral">✓</span> Custodia de la documentación durante 4 años</li>
+            <li class="flex gap-3"><span class="mt-0.5 text-coral">✓</span> Formación gratuita para el trabajador, en horario laboral</li>
+          </ul>
+          <p class="mt-6 text-xs text-muted leading-relaxed">
+            El importe final de la bonificación depende del crédito formativo disponible de la empresa y del
+            nº de asistentes. La validación en materia de protección de datos corresponde al DPO o asesoría jurídica del cliente.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA FINAL / CONTACTO ============ -->
+    <section id="contacto" class="border-t border-line bg-ink text-cream">
+      <div class="mx-auto max-w-6xl px-6 py-20 md:py-28">
+        <div class="grid gap-12 lg:grid-cols-2 lg:gap-20 items-center">
+          <div>
+            <p class="text-xs font-600 uppercase tracking-[0.2em] text-coral mb-4">Siguiente paso</p>
+            <h2 class="font-serif text-3xl md:text-5xl font-600 leading-[1.1] text-cream">Empezar cuesta una llamada</h2>
+            <div class="mt-8 space-y-5">
+              <div class="flex gap-4">
+                <span class="font-serif text-2xl font-600 text-coral">1</span>
+                <p class="text-cream/80 leading-relaxed"><strong class="text-cream font-600">Llamada de 30 minutos</strong> para conocer vuestros procesos y calcular vuestro crédito FUNDAE disponible.</p>
+              </div>
+              <div class="flex gap-4">
+                <span class="font-serif text-2xl font-600 text-coral">2</span>
+                <p class="text-cream/80 leading-relaxed"><strong class="text-cream font-600">Propuesta cerrada en 48 h</strong> con calendario, precio neto y resultados a medir.</p>
+              </div>
+              <div class="flex gap-4">
+                <span class="font-serif text-2xl font-600 text-coral">3</span>
+                <p class="text-cream/80 leading-relaxed"><strong class="text-cream font-600">Arranque del diagnóstico</strong> la semana siguiente.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Formulario -->
+          <div class="rounded-3xl bg-cream p-8 text-ink md:p-10">
+            <h3 class="font-serif text-2xl font-600">Reserva tu llamada</h3>
+            <p class="mt-2 text-sm text-muted">Te contactamos en menos de 24 h laborables. Sin compromiso.</p>
+            <form id="lead-form" class="mt-6 space-y-4" onsubmit="return handleSubmit(event)">
+              <!-- Web3Forms: sustituye TU_ACCESS_KEY por tu clave (se genera con david.montesinosg@gmail.com en web3forms.com) -->
+              <input type="hidden" name="access_key" value="TU_ACCESS_KEY" />
+              <input type="hidden" name="subject" value="Nueva solicitud de llamada · IA Productiva" />
+              <input type="hidden" name="from_name" value="Landing IA Productiva" />
+              <!-- Honeypot anti-spam (no rellenar) -->
+              <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
+              <div>
+                <label class="block text-sm font-600 mb-1.5" for="nombre">Nombre y apellidos</label>
+                <input id="nombre" name="nombre" type="text" required class="w-full rounded-xl border border-line bg-white px-4 py-3 text-sm outline-none focus:border-coral focus:ring-2 focus:ring-coral/20 transition" placeholder="Tu nombre" />
+              </div>
+              <div>
+                <label class="block text-sm font-600 mb-1.5" for="empresa">Empresa</label>
+                <input id="empresa" name="empresa" type="text" required class="w-full rounded-xl border border-line bg-white px-4 py-3 text-sm outline-none focus:border-coral focus:ring-2 focus:ring-coral/20 transition" placeholder="Nombre de la empresa" />
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-600 mb-1.5" for="email">Email</label>
+                  <input id="email" name="email" type="email" required class="w-full rounded-xl border border-line bg-white px-4 py-3 text-sm outline-none focus:border-coral focus:ring-2 focus:ring-coral/20 transition" placeholder="tu@empresa.com" />
+                </div>
+                <div>
+                  <label class="block text-sm font-600 mb-1.5" for="telefono">Teléfono</label>
+                  <input id="telefono" name="telefono" type="tel" class="w-full rounded-xl border border-line bg-white px-4 py-3 text-sm outline-none focus:border-coral focus:ring-2 focus:ring-coral/20 transition" placeholder="600 000 000" />
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-600 mb-1.5" for="empleados">Nº de personas a formar (aprox.)</label>
+                <select id="empleados" name="empleados" class="w-full rounded-xl border border-line bg-white px-4 py-3 text-sm outline-none focus:border-coral focus:ring-2 focus:ring-coral/20 transition">
+                  <option>1–8</option>
+                  <option>8–20</option>
+                  <option>20–50</option>
+                  <option>Más de 50</option>
+                </select>
+              </div>
+              <label class="flex items-start gap-2 text-xs text-muted">
+                <input type="checkbox" required class="mt-0.5 accent-coral" />
+                <span>He leído y acepto la política de privacidad y el tratamiento de mis datos para ser contactado.</span>
+              </label>
+              <button type="submit" class="w-full rounded-full bg-coral px-6 py-3.5 font-600 text-white hover:bg-coraldk transition">
+                Reservar mi llamada
+              </button>
+              <p id="form-msg" class="hidden text-center text-sm font-600 text-coral"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-ink text-cream/50 border-t border-white/10">
+    <div class="mx-auto max-w-6xl px-6 py-10 flex flex-col md:flex-row gap-4 md:items-center md:justify-between text-sm">
+      <div class="flex items-center gap-2 text-cream/80">
+        <span class="inline-block h-2 w-2 rounded-full bg-coral"></span>
+        <span class="font-serif font-600">IA Productiva</span>
+        <span class="text-cream/40">· Formación en IA para pymes</span>
+      </div>
+      <p class="text-xs leading-relaxed max-w-xl">
+        La formación se imparte en aula virtual con registro de conexiones conforme a los requisitos de FUNDAE.
+        La validación legal en materia de protección de datos corresponde al DPO o asesoría jurídica del cliente.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-up').forEach((el, i) => { el.style.transitionDelay = (i % 3) * 80 + 'ms'; io.observe(el); });
+
+    // Resaltar la pestaña de la sección visible
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach((l) => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach((s) => navObserver.observe(s));
+
+    // Envío del formulario a Web3Forms → correo david.montesinosg@gmail.com
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const msg = document.getElementById('form-msg');
+      const btn = form.querySelector('button[type="submit"]');
+      const original = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Enviando…';
+      msg.classList.remove('hidden');
+      msg.classList.remove('text-red-600');
+      msg.classList.add('text-coral');
+      msg.textContent = '';
+
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form),
+        });
+        const data = await res.json();
+        if (data.success) {
+          msg.textContent = '¡Gracias! Hemos recibido tus datos y te contactaremos en menos de 24 h laborables.';
+          form.reset();
+        } else {
+          throw new Error(data.message || 'Error');
+        }
+      } catch (err) {
+        msg.classList.remove('text-coral');
+        msg.classList.add('text-red-600');
+        msg.textContent = 'No se pudo enviar. Escríbenos a david.montesinosg@gmail.com o inténtalo de nuevo.';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = original;
+      }
+      return false;
+    }
+  </script>
+</body>
+</html>

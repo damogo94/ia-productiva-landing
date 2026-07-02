@@ -1,0 +1,13 @@
+# Materiales internos del curso — no forman parte de la web
+*.pdf
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+
+# Dependencias (por si en el futuro se añade build)
+node_modules/
+.vercel
