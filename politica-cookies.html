@@ -4,64 +4,67 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex,nofollow" />
-  <title>Política de cookies · [Tu Marca]</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23141310'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23E4572E'/%3E%3C/svg%3E" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <title>Política de cookies · Innovai</title>
+  <link rel="icon" sizes="any" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23132946'/%3E%3Crect x='11.3' y='11.3' width='9.4' height='9.4' transform='rotate(45 16 16)' fill='%2300c3db'/%3E%3C/svg%3E" />
+  <link rel="preload" href="fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = { theme: { extend: {
-      colors: { cream: '#FBF9F4', ink: '#141310', coral: '#E4572E', coraldk: '#C6431F', muted: '#6B665E', line: '#E4DDD9' },
-      fontFamily: { serif: ['Fraunces','Georgia','serif'], sans: ['Inter','system-ui','sans-serif'] } } } };
+      colors: { 'surface-0': '#f7fbfd', 'surface-100': '#e7eef3', 'ink-900': '#132946', 'ink-600': '#556880', 'accent-strong': '#007694', danger: '#b42318' },
+      fontWeight: { 400: '400', 600: '600' },
+      fontFamily: { sans: ['Inter','system-ui','sans-serif'] } } } };
   </script>
+  <style>
+    @font-face { font-family:'Inter'; src:url('fonts/inter-var.woff2') format('woff2'); font-weight:400 700; font-style:normal; font-display:swap; }
+  </style>
 </head>
-<body class="font-sans text-ink bg-cream antialiased">
+<body class="font-sans text-ink-900 bg-surface-0 antialiased">
   <div class="mx-auto max-w-3xl px-6 py-16">
-    <a href="index.html" class="text-sm text-coraldk hover:underline">← Volver a la web</a>
+    <a href="index.html" class="text-sm text-accent-strong hover:underline">← Volver a la web</a>
 
-    <div class="mt-6 rounded-xl border border-coral/40 bg-coral/10 p-4 text-sm text-ink">
+    <div class="mt-6 rounded-xl border border-danger/40 bg-danger/5 p-4 text-sm text-ink-900">
       <strong>⚠️ Borrador pendiente de validación.</strong> Debe reflejar las cookies y recursos de terceros que
-      realmente cargue el sitio. Actualmente la web carga <strong>Google Fonts</strong> y <strong>Tailwind (CDN)</strong>,
-      que implican conexiones a terceros. Si se autoalojan (recomendado), esta política se simplifica. Revisar con
-      asesoría jurídica.
+      realmente cargue el sitio. La tipografía ya está <strong>autoalojada</strong> (sin conexión a Google Fonts);
+      queda <strong>Tailwind (CDN)</strong> como único tercero de estilos. Si se migra a build propio, esta política
+      se simplifica. Revisar con asesoría jurídica.
     </div>
 
-    <h1 class="mt-8 font-serif text-3xl font-600">Política de cookies</h1>
+    <h1 class="mt-8 text-3xl font-600">Política de cookies</h1>
 
-    <div class="mt-8 space-y-6 text-sm leading-relaxed text-ink/90">
+    <div class="mt-8 space-y-6 text-sm leading-relaxed text-ink-900/90">
       <section>
-        <h2 class="font-serif text-xl font-600">1. ¿Qué son las cookies?</h2>
-        <p class="mt-2 text-muted">Las cookies son pequeños archivos que se almacenan en tu dispositivo al visitar una
+        <h2 class="text-xl font-600">1. ¿Qué son las cookies?</h2>
+        <p class="mt-2 text-ink-600">Las cookies son pequeños archivos que se almacenan en tu dispositivo al visitar una
           web. También informamos aquí de otras tecnologías de almacenamiento local que utilizamos.</p>
       </section>
 
       <section>
-        <h2 class="font-serif text-xl font-600">2. Cookies y almacenamiento que utiliza este sitio</h2>
-        <ul class="mt-2 space-y-2 text-muted">
+        <h2 class="text-xl font-600">2. Cookies y almacenamiento que utiliza este sitio</h2>
+        <ul class="mt-2 space-y-2 text-ink-600">
           <li><strong>Almacenamiento técnico propio (localStorage):</strong> guardamos temporalmente en tu navegador lo
             que escribes en el formulario de diagnóstico para que no lo pierdas si lo dejas a medias. No se comparte con
             terceros. Es necesario para esa función.</li>
-          <li><strong>Recursos de terceros:</strong> al cargar tipografías desde <em>Google Fonts</em> y estilos desde el
-            <em>CDN de Tailwind</em>, tu navegador se conecta a servidores de terceros que pueden tratar tu dirección IP.
-            <span class="italic">[PENDIENTE: confirmar si estos servicios instalan cookies o solo procesan la IP]</span></li>
+          <li><strong>Recursos de terceros:</strong> la tipografía del sitio está autoalojada (no hay conexión a Google
+            Fonts). Al cargar los estilos desde el <em>CDN de Tailwind</em>, tu navegador se conecta a un servidor de
+            terceros que puede tratar tu dirección IP.
+            <span class="italic">[PENDIENTE: confirmar si este servicio instala cookies o solo procesa la IP]</span></li>
           <li><strong>Formulario (Web3Forms):</strong> el envío del formulario se procesa a través de un proveedor
             externo. <span class="italic">[PENDIENTE: detallar tratamiento del proveedor]</span></li>
         </ul>
-        <p class="mt-3 text-muted">Este sitio <strong>no utiliza actualmente cookies analíticas ni publicitarias</strong>.
+        <p class="mt-3 text-ink-600">Este sitio <strong>no utiliza actualmente cookies analíticas ni publicitarias</strong>.
           Si en el futuro se añaden (p. ej. Google Analytics o píxeles), deberá implementarse un banner de consentimiento
           previo. <span class="italic">[PENDIENTE]</span></p>
       </section>
 
       <section>
-        <h2 class="font-serif text-xl font-600">3. Cómo gestionar las cookies</h2>
-        <p class="mt-2 text-muted">Puedes borrar o bloquear las cookies y el almacenamiento local desde la configuración
+        <h2 class="text-xl font-600">3. Cómo gestionar las cookies</h2>
+        <p class="mt-2 text-ink-600">Puedes borrar o bloquear las cookies y el almacenamiento local desde la configuración
           de tu navegador. Ten en cuenta que deshabilitar el almacenamiento técnico puede afectar al funcionamiento del
           formulario.</p>
       </section>
     </div>
 
-    <p class="mt-10 text-xs text-muted">Documento en borrador. No constituye asesoramiento jurídico.</p>
+    <p class="mt-10 text-xs text-ink-600">Documento en borrador. No constituye asesoramiento jurídico.</p>
   </div>
 </body>
 </html>

@@ -1,32 +1,44 @@
-# IA Productiva — Landing page
+# Innovai — Landing page
 
-Landing page para promocionar los programas de formación en IA para pymes,
-bonificables vía FUNDAE.
+Landing de **Innovai** (inteligencia artificial para empresas) para captar leads de pymes:
+formación en IA bonificable vía FUNDAE + consultoría y automatización. La conversión
+principal es el formulario de diagnóstico (wizard de 4 pasos).
 
-Sitio estático (un único `index.html`, sin build ni dependencias). Estilo con
-Tailwind CSS (CDN) y tipografía Fraunces + Inter.
+Sitio estático sin build: Tailwind CSS (Play CDN) + Inter variable autoalojada.
 
 ## Estructura
 
-- **index.html** — la página completa (hero, resultados, método, programas, FUNDAE, formulario).
+- **index.html** — la página completa (hero, credibilidad, problema, método, departamentos, FUNDAE, subvenciones, casos, calculadora, formulario wizard, FAQ).
+- **aviso-legal.html · privacidad.html · politica-cookies.html** — páginas legales *(en borrador: pendientes de validación jurídica y de los datos del responsable)*.
+- **fonts/inter-var.woff2** — Inter variable (400–700, subset latino), única familia del sitio, con preload y fallback métrico anti-CLS.
+- **apple-touch-icon.png** — icono iOS (el favicon es SVG inline con el nodo de la marca).
+
+## Identidad
+
+Wordmark **Innovai** como componente SVG inline (`<symbol>`: variantes `wordmark`, `full`, `mark`):
+"Innov" en Inter 500 + "aı" en Inter 700, con el punto de la ı sustituido por el **nodo**
+(cuadrado rotado 45° en el acento cian). Sistema de tokens **OKLCH** documentado en el
+`<style>` de `index.html` con los ratios WCAG verificados; el acento tiene presupuesto
+cerrado (nodo del logo, focus/active, cifras clave y CTA secundario).
 
 ## Formulario de contacto
 
-El formulario envía las solicitudes al correo mediante [Web3Forms](https://web3forms.com)
-(sin backend). Para activarlo:
+El formulario envía las solicitudes por email mediante [Web3Forms](https://web3forms.com) (sin backend).
 
-1. Entra en https://web3forms.com y genera una **Access Key** con el correo
-   `david.montesinosg@gmail.com`.
-2. En `index.html`, sustituye `TU_ACCESS_KEY` por la clave generada.
-3. Listo: cada envío llega a ese correo.
+1. Genera una **Access Key** en web3forms.com con el correo de destino.
+2. En `index.html`, sustituye `TU_ACCESS_KEY` (input hidden `access_key`).
+3. Cada envío llega a ese correo con los datos del wizard **y de la calculadora de ahorro**.
 
-> Nota: mientras la clave sea `TU_ACCESS_KEY`, el formulario mostrará un error al enviar.
+> ⚠️ Mientras la clave sea `TU_ACCESS_KEY`, el formulario mostrará el estado de error al enviar.
 
-## Base de datos (opcional, más adelante)
+## Pendientes antes de publicar
 
-Para empezar no hace falta. Si en el futuro quieres un panel de leads
-(ver/filtrar/exportar las solicitudes como un mini-CRM), se puede añadir
-**Supabase** guardando cada envío en una tabla `leads`.
+- Access Key real de Web3Forms.
+- Dominio definitivo en `canonical`, Open Graph y JSON-LD (`TU-DOMINIO.com`) + `og-image.png` 1200×630.
+- Nº de registro FUNDAE y datos del responsable (razón social, NIF, email) en la franja de credibilidad, la capa RGPD del formulario y las páginas legales.
+- Cambiar `<meta name="robots">` de `noindex` a `index,follow`.
+- Vídeos reales para la sección de casos (los contenedores 16:9 ya están preparados).
+- Opcional (rendimiento): migrar Tailwind del CDN a build propio (último tercero restante).
 
 ## Despliegue
 
@@ -35,9 +47,7 @@ a `main` publica automáticamente.
 
 ## Desarrollo local
 
-Al ser estático, basta con abrir `index.html` en el navegador. Opcionalmente:
-
 ```bash
-python -m http.server 8000
-# http://localhost:8000
+python -m http.server 4321
+# http://localhost:4321
 ```
