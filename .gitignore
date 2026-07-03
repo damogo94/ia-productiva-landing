@@ -11,3 +11,8 @@ Thumbs.db
 # Dependencias (por si en el futuro se añade build)
 node_modules/
 .vercel
+
+# Secretos y variables de entorno — NUNCA al repositorio
+.env
+.env.*
+*.key
