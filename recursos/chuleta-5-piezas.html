@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chuleta — Las 5 piezas de un buen prompt · Innovai</title>
+<style>
+  @font-face {
+    font-family: 'Inter';
+    src: url('../fonts/inter-var.woff2') format('woff2');
+    font-weight: 400 700;
+    font-display: swap;
+  }
+
+  :root {
+    --ink-950: #07162a;
+    --ink-900: #132946;
+    --ink-700: #425771;
+    --ink-600: #556880;
+    --ink-400: #889aae;
+    --surface-0: #f7fbfd;
+    --surface-100: #e7eef3;
+    --surface-200: #d8e1e8;
+    --accent: #00c3db;
+    --accent-strong: #007694;
+    --danger: #b42318;
+    --success: #067647;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--surface-100);
+    color: var(--ink-900);
+    font-size: 9.2pt;
+    line-height: 1.55;
+    padding: 12mm 0;
+  }
+
+  @page { size: A4; margin: 0; }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: var(--surface-0);
+    padding: 0 0 0 0;
+    box-shadow: 0 6px 28px rgba(7, 22, 42, 0.14);
+    display: flex;
+    flex-direction: column;
+    page-break-after: always;
+    overflow: hidden;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  @media print {
+    body { background: none; padding: 0; }
+    .page { box-shadow: none; margin: 0; min-height: auto; }
+  }
+
+  /* ---------- Cabecera ---------- */
+  .masthead {
+    background: var(--ink-900);
+    padding: 7mm 15mm 6mm;
+  }
+  .masthead-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4mm;
+  }
+  .masthead-tag {
+    font-size: 7pt;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .masthead h1 {
+    color: var(--surface-0);
+    font-size: 21pt;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+  }
+  .masthead h1 .num { color: var(--accent); font-variant-numeric: tabular-nums; }
+  .masthead p {
+    color: var(--ink-400);
+    font-size: 9pt;
+    margin-top: 2mm;
+    max-width: 150mm;
+  }
+
+  /* ---------- Cuerpo ---------- */
+  .body {
+    flex: 1;
+    padding: 5.5mm 15mm 4mm;
+    display: flex;
+    flex-direction: column;
+    gap: 4.5mm;
+  }
+
+  .cols {
+    display: grid;
+    grid-template-columns: 1.06fr 0.94fr;
+    gap: 7mm;
+    align-items: start;
+  }
+
+  h2 {
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+    display: flex;
+    align-items: center;
+    gap: 2.2mm;
+    margin-bottom: 3.2mm;
+  }
+  h2 .node {
+    width: 2.4mm;
+    height: 2.4mm;
+    background: var(--accent-strong);
+    transform: rotate(45deg);
+    flex: none;
+  }
+
+  /* ---------- Las 5 piezas ---------- */
+  .pieza {
+    display: grid;
+    grid-template-columns: 8mm 1fr;
+    gap: 3mm;
+    padding: 2.1mm 0;
+    border-bottom: 1px solid var(--surface-200);
+  }
+  .pieza:last-child { border-bottom: none; }
+  .pieza-num {
+    width: 8mm;
+    height: 8mm;
+    background: var(--ink-900);
+    color: var(--accent);
+    font-size: 10.5pt;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1.2mm;
+    margin-top: 0.4mm;
+  }
+  .pieza h3 {
+    font-size: 10pt;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink-900);
+  }
+  .pieza h3 span {
+    font-weight: 400;
+    color: var(--ink-600);
+    font-size: 8.6pt;
+    letter-spacing: 0;
+  }
+  .pieza .ej {
+    margin-top: 1mm;
+    font-size: 8.3pt;
+    color: var(--ink-700);
+    background: var(--surface-100);
+    border-left: 2px solid var(--accent-strong);
+    padding: 1.4mm 2.5mm;
+    border-radius: 0 1mm 1mm 0;
+  }
+  .pieza-nota {
+    margin-top: 3mm;
+    font-size: 8.4pt;
+    color: var(--ink-600);
+    padding: 2.4mm 3mm;
+    border: 1px solid var(--surface-200);
+    border-radius: 1.5mm;
+    background: #fff0;
+  }
+  .pieza-nota strong { color: var(--ink-900); font-weight: 600; }
+
+  /* ---------- Así no / Así sí ---------- */
+  .contraste { display: flex; flex-direction: column; gap: 3mm; }
+  .caso {
+    border: 1px solid var(--surface-200);
+    border-radius: 1.8mm;
+    overflow: hidden;
+    background: #ffffff;
+  }
+  .caso-label {
+    font-size: 7.2pt;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 1.6mm 3mm;
+    display: flex;
+    align-items: center;
+    gap: 1.8mm;
+  }
+  .caso-no .caso-label { color: var(--danger); background: #b423180f; border-bottom: 1px solid var(--surface-200); }
+  .caso-si .caso-label { color: var(--success); background: #0676470f; border-bottom: 1px solid var(--surface-200); }
+  .caso-label svg { flex: none; }
+  .caso-txt {
+    padding: 2.4mm 3mm;
+    font-size: 8.4pt;
+    color: var(--ink-700);
+    line-height: 1.55;
+  }
+  .caso-si { border-left: 2.5px solid var(--success); }
+  .caso-no { border-left: 2.5px solid var(--danger); }
+  .contraste-pie {
+    font-size: 8.2pt;
+    color: var(--ink-600);
+  }
+
+  /* ---------- Técnicas ---------- */
+  .tecnicas {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 3mm;
+  }
+  .tecnica {
+    background: #ffffff;
+    border: 1px solid var(--surface-200);
+    border-top: 2.5px solid var(--accent-strong);
+    border-radius: 0 0 1.8mm 1.8mm;
+    padding: 2.6mm 2.8mm 2.8mm;
+  }
+  .tecnica .t-num {
+    font-size: 12pt;
+    font-weight: 700;
+    color: var(--accent-strong);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 1.6mm;
+  }
+  .tecnica h3 {
+    font-size: 8.6pt;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink-900);
+    line-height: 1.3;
+    margin-bottom: 1.2mm;
+  }
+  .tecnica p {
+    font-size: 7.8pt;
+    color: var(--ink-600);
+    line-height: 1.5;
+  }
+  .tecnica p em { font-style: normal; color: var(--ink-700); font-weight: 600; }
+
+  /* ---------- Regla de oro ---------- */
+  .regla {
+    background: var(--ink-900);
+    border-radius: 2mm;
+    padding: 3.4mm 6mm;
+    display: flex;
+    align-items: center;
+    gap: 5mm;
+  }
+  .regla .nodo-grande {
+    width: 4.5mm;
+    height: 4.5mm;
+    background: var(--accent);
+    transform: rotate(45deg);
+    flex: none;
+    margin: 0 1.5mm;
+  }
+  .regla .regla-txt { flex: 1; }
+  .regla .regla-kicker {
+    font-size: 7pt;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-400);
+    margin-bottom: 1mm;
+  }
+  .regla p.frase {
+    color: var(--surface-0);
+    font-size: 12.5pt;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+  }
+  .regla p.frase .cian { color: var(--accent); }
+
+  /* ---------- Pie ---------- */
+  .footer {
+    padding: 2.8mm 15mm 4.5mm;
+    border-top: 1px solid var(--surface-200);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 7pt;
+    color: var(--ink-600);
+  }
+  .footer .f-node {
+    width: 1.8mm;
+    height: 1.8mm;
+    background: var(--accent-strong);
+    transform: rotate(45deg);
+    display: inline-block;
+    margin-right: 2mm;
+    vertical-align: middle;
+  }
+</style>
+</head>
+<body>
+
+<section class="page">
+
+  <!-- Cabecera -->
+  <header class="masthead">
+    <div class="masthead-top">
+      <svg width="102" height="31" viewBox="0 0 118 36" role="img" aria-label="Innovai"><text x="114" y="29" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-size="30" letter-spacing="-0.015em" fill="#f7fbfd"><tspan font-weight="500">Innov</tspan><tspan font-weight="700" dx="-0.3">a&#305;</tspan></text><rect x="106.1" y="6.8" width="5.4" height="5.4" transform="rotate(45 108.8 9.5)" fill="#00c3db"/></svg>
+      <span class="masthead-tag">Chuleta · Para tener al lado del teclado</span>
+    </div>
+    <h1>Las <span class="num">5</span> piezas de un buen prompt</h1>
+    <p>El 90&nbsp;% de la mejora está en cómo pides las cosas. Mismo asistente, misma tarea: la diferencia la ponen estas cinco piezas.</p>
+  </header>
+
+  <!-- Cuerpo -->
+  <div class="body">
+
+    <div class="cols">
+
+      <!-- Columna izquierda: las 5 piezas -->
+      <div>
+        <h2><span class="node"></span>Las 5 piezas</h2>
+
+        <div class="pieza">
+          <div class="pieza-num">1</div>
+          <div>
+            <h3>Rol <span>— quién quieres que sea la IA</span></h3>
+            <div class="ej">«Eres responsable de atención al cliente de una empresa de [sector]…»</div>
+          </div>
+        </div>
+
+        <div class="pieza">
+          <div class="pieza-num">2</div>
+          <div>
+            <h3>Contexto <span>— la situación, con los detalles que importan</span></h3>
+            <div class="ej">«Un cliente reclama porque su pedido llegó 5 días tarde, y es la segunda vez este año.»</div>
+          </div>
+        </div>
+
+        <div class="pieza">
+          <div class="pieza-num">3</div>
+          <div>
+            <h3>Tarea <span>— qué quieres exactamente</span></h3>
+            <div class="ej">«Escribe un email de respuesta que pida disculpas sin excusas y ofrezca una compensación concreta.»</div>
+          </div>
+        </div>
+
+        <div class="pieza">
+          <div class="pieza-num">4</div>
+          <div>
+            <h3>Formato <span>— cómo quieres la salida</span></h3>
+            <div class="ej">«Tono profesional y cercano, máximo 120 palabras.»</div>
+          </div>
+        </div>
+
+        <div class="pieza">
+          <div class="pieza-num">5</div>
+          <div>
+            <h3>Veto <span>— qué NO quieres</span></h3>
+            <div class="ej">«Nada de frases hechas tipo “lamentamos las molestias”.»</div>
+          </div>
+        </div>
+
+        <div class="pieza-nota">
+          <strong>No siempre necesitas las cinco.</strong> Pero cuando una respuesta te decepcione, repasa la lista: casi siempre falta una.
+        </div>
+      </div>
+
+      <!-- Columna derecha: así no / así sí -->
+      <div>
+        <h2><span class="node"></span>Así no / Así sí</h2>
+        <div class="contraste">
+
+          <div class="caso caso-no">
+            <div class="caso-label">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#b42318" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+              Así no
+            </div>
+            <div class="caso-txt">Escribe un email para un cliente enfadado.</div>
+          </div>
+
+          <div class="caso caso-si">
+            <div class="caso-label">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#067647" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+              Así sí
+            </div>
+            <div class="caso-txt">Eres responsable de atención al cliente de una empresa de [sector]. Un cliente reclama porque su pedido llegó 5 días tarde y es la segunda vez este año. Escribe un email de respuesta: tono profesional y cercano, máximo 120 palabras, que pida disculpas sin excusas, ofrezca una compensación concreta y termine con un compromiso. No uses frases hechas tipo «lamentamos las molestias».</div>
+          </div>
+
+          <p class="contraste-pie">Con el prompt vago, la IA responde con tres párrafos de frases hechas que suenan a robot. Con las 5 piezas, entrega un email concreto, con compensación y compromiso, listo para revisar y enviar.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Técnicas -->
+    <div>
+      <h2><span class="node"></span>Las 5 técnicas que más mejoran resultados</h2>
+      <div class="tecnicas">
+
+        <div class="tecnica">
+          <div class="t-num">1</div>
+          <h3>Itera, no te conformes</h3>
+          <p>La primera respuesta es un borrador. Pide: <em>«más corto»</em>, <em>«más directo»</em>, <em>«en tabla»</em>, <em>«otro enfoque»</em>.</p>
+        </div>
+
+        <div class="tecnica">
+          <div class="t-num">2</div>
+          <h3>Pide el formato de salida</h3>
+          <p>Tabla, lista, email, esquema, nº de palabras. Si no lo pides, la IA lo decide por ti.</p>
+        </div>
+
+        <div class="tecnica">
+          <div class="t-num">3</div>
+          <h3>«Pregúntame lo que te falte»</h3>
+          <p>En tareas complejas: <em>«antes de responder, hazme las preguntas que necesites»</em>. Es la técnica que más sube la calidad.</p>
+        </div>
+
+        <div class="tecnica">
+          <div class="t-num">4</div>
+          <h3>Da un ejemplo de estilo</h3>
+          <p>Pega un texto tuyo que te guste: <em>«escríbelo como este ejemplo»</em>. La IA imita muy bien.</p>
+        </div>
+
+        <div class="tecnica">
+          <div class="t-num">5</div>
+          <h3>Pide qué hay que verificar</h3>
+          <p><em>«Señala qué afirmaciones debería comprobar.»</em> Y los datos clave, contrástalos fuera de la IA.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Regla de oro -->
+    <div class="regla">
+      <div class="nodo-grande"></div>
+      <div class="regla-txt">
+        <div class="regla-kicker">La regla de oro</div>
+        <p class="frase">La IA redacta el borrador. <span class="cian">Tú decides, revisas y firmas.</span> Siempre.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Pie -->
+  <footer class="footer">
+    <span><span class="f-node"></span>Innovai — Inteligencia artificial para empresas · Material del programa IA Productiva</span>
+    <span>Chuleta nº 1 · 1/1</span>
+  </footer>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>8 prompts listos para copiar, adaptar y reutilizar — Innovai</title>
+<style>
+  @font-face {
+    font-family: 'Inter';
+    src: url('../fonts/inter-var.woff2') format('woff2');
+    font-weight: 400 700;
+    font-display: swap;
+  }
+
+  :root {
+    --ink-950: #07162a;
+    --ink-900: #132946;
+    --ink-700: #425771;
+    --ink-600: #556880;
+    --ink-400: #889aae;
+    --surface-0: #f7fbfd;
+    --surface-100: #e7eef3;
+    --surface-200: #d8e1e8;
+    --accent: #00c3db;
+    --accent-strong: #007694;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--surface-100);
+    color: var(--ink-900);
+    font-size: 10pt;
+    line-height: 1.6;
+    padding: 12mm 0;
+  }
+
+  @page { size: A4; margin: 0; }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--surface-0);
+    margin: 0 auto 12mm;
+    padding: 15mm;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 6px 28px rgba(7, 22, 42, 0.14);
+    page-break-after: always;
+  }
+  .page:last-child { margin-bottom: 0; page-break-after: auto; }
+
+  @media print {
+    body { background: none; padding: 0; }
+    .page { box-shadow: none; margin: 0; }
+  }
+
+  /* ---------- Cabecera página 1 ---------- */
+  .masthead {
+    background: var(--ink-900);
+    margin: -15mm -15mm 0;
+    padding: 10mm 15mm 9mm;
+  }
+  .masthead .brandline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 7mm;
+  }
+  .masthead .kicker {
+    font-size: 7.5pt;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .masthead h1 {
+    font-size: 21pt;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--surface-0);
+    max-width: 150mm;
+  }
+  .masthead h1 .num {
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .masthead .sub {
+    margin-top: 2.5mm;
+    font-size: 10pt;
+    font-weight: 400;
+    color: var(--ink-400);
+    max-width: 145mm;
+  }
+
+  /* ---------- Franja de instrucciones ---------- */
+  .howto {
+    display: flex;
+    align-items: flex-start;
+    gap: 4mm;
+    background: var(--surface-0);
+    border: 1px solid var(--surface-200);
+    border-left: 3px solid var(--accent-strong);
+    padding: 4mm 5mm;
+    margin: 7mm 0 6mm;
+  }
+  .howto .node {
+    width: 8px;
+    height: 8px;
+    background: var(--accent-strong);
+    transform: rotate(45deg);
+    flex: 0 0 auto;
+    margin-top: 4.5px;
+  }
+  .howto p {
+    font-size: 9.5pt;
+    color: var(--ink-700);
+    line-height: 1.55;
+  }
+  .howto strong { font-weight: 600; color: var(--ink-900); }
+
+  /* ---------- Rejilla de recetas ---------- */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5mm;
+    align-content: start;
+  }
+
+  .card {
+    background: #ffffff;
+    border: 1px solid var(--surface-200);
+    border-radius: 3px;
+    padding: 5mm 5mm 5.5mm;
+    display: flex;
+    flex-direction: column;
+    break-inside: avoid;
+  }
+  .card .head {
+    display: flex;
+    align-items: center;
+    gap: 3mm;
+    margin-bottom: 1.5mm;
+  }
+  .card .icon {
+    flex: 0 0 auto;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface-100);
+    border-radius: 3px;
+  }
+  .card .icon svg { display: block; }
+  .card .idx {
+    margin-left: auto;
+    font-size: 8pt;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-400);
+  }
+  .card h2 {
+    font-size: 11.5pt;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink-900);
+    line-height: 1.25;
+  }
+  .card .use {
+    font-size: 8.5pt;
+    color: var(--ink-600);
+    line-height: 1.5;
+    margin-bottom: 3mm;
+  }
+  .card .prompt {
+    background: var(--surface-100);
+    border: 1px solid var(--surface-200);
+    border-radius: 3px;
+    padding: 3.5mm 4mm;
+    font-size: 8.7pt;
+    line-height: 1.6;
+    color: var(--ink-900);
+    margin-top: auto;
+  }
+  .card .prompt .ph {
+    color: var(--accent-strong);
+    font-weight: 600;
+  }
+  .card .prompt .label {
+    display: block;
+    font-size: 6.8pt;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-400);
+    margin-bottom: 1.5mm;
+  }
+
+  /* ---------- Cabecera continuación (pág. 2) ---------- */
+  .conthead {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--ink-900);
+    padding-bottom: 3mm;
+    margin-bottom: 6mm;
+  }
+  .conthead h2 {
+    font-size: 12pt;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink-900);
+  }
+  .conthead span {
+    font-size: 8.5pt;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-600);
+  }
+
+  /* ---------- Cierre / recordatorio ---------- */
+  .reminder {
+    margin-top: 6mm;
+    display: flex;
+    align-items: flex-start;
+    gap: 4mm;
+    background: var(--ink-900);
+    padding: 4.5mm 6mm;
+    border-radius: 3px;
+  }
+  .reminder .node {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    transform: rotate(45deg);
+    flex: 0 0 auto;
+    margin-top: 5px;
+  }
+  .reminder p {
+    font-size: 9pt;
+    color: var(--ink-400);
+    line-height: 1.55;
+  }
+  .reminder strong { color: var(--surface-0); font-weight: 600; }
+  .reminder .cyan { color: var(--accent); font-weight: 600; }
+
+  /* ---------- Pie ---------- */
+  .foot {
+    margin-top: auto;
+    padding-top: 5mm;
+    border-top: 1px solid var(--surface-200);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 7.5pt;
+    color: var(--ink-600);
+  }
+  .foot .pg { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+
+<!-- ==================== PÁGINA 1 ==================== -->
+<section class="page">
+
+  <header class="masthead">
+    <div class="brandline">
+      <svg width="102" height="31" viewBox="0 0 118 36" role="img" aria-label="Innovai"><text x="114" y="29" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-size="30" letter-spacing="-0.015em" fill="#f7fbfd"><tspan font-weight="500">Innov</tspan><tspan font-weight="700" dx="-0.3">a&#305;</tspan></text><rect x="106.1" y="6.8" width="5.4" height="5.4" transform="rotate(45 108.8 9.5)" fill="#00c3db"/></svg>
+      <span class="kicker">El recetario</span>
+    </div>
+    <h1><span class="num">8</span> prompts listos para copiar, adaptar y reutilizar</h1>
+    <p class="sub">Tu kit de productividad del programa «Haz que la IA trabaje para ti».</p>
+  </header>
+
+  <div class="howto">
+    <span class="node" aria-hidden="true"></span>
+    <p><strong>Cómo usar este recetario:</strong> cambia lo que va entre <strong>[CORCHETES]</strong> y a producir. Consejo: guarda los prompts que te funcionen donde los tengas a un clic — la productividad real está en reutilizar, no en reinventar.</p>
+  </div>
+
+  <div class="grid">
+
+    <!-- 1 · El email difícil -->
+    <article class="card">
+      <div class="head">
+        <span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#132946" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+        <h2>El email difícil</h2>
+        <span class="idx">01</span>
+      </div>
+      <p class="use">Quejas, impagos, malas noticias.</p>
+      <div class="prompt">
+        <span class="label">Prompt</span>
+        Eres <span class="ph">[tu rol]</span> en una empresa de <span class="ph">[sector]</span>. Situación: <span class="ph">[describir]</span>. Escribe un email a <span class="ph">[destinatario]</span> que <span class="ph">[objetivo: disculparse / reclamar / comunicar]</span>. Tono <span class="ph">[profesional y cercano / firme pero correcto]</span>, máximo <span class="ph">[120]</span> palabras. Evita frases hechas. Antes de escribir, pregúntame lo que necesites.
+      </div>
+    </article>
+
+    <!-- 2 · El digestor de documentos -->
+    <article class="card">
+      <div class="head">
+        <span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#132946" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span>
+        <h2>El digestor de documentos</h2>
+        <span class="idx">02</span>
+      </div>
+      <p class="use">Informes, normativa, actas.</p>
+      <div class="prompt">
+        <span class="label">Prompt</span>
+        Resume este documento para alguien que tiene 2 minutos: 1) la idea principal en una frase, 2) los 5 puntos clave, 3) riesgos o letra pequeña, 4) qué decisiones hay que tomar. Texto: <span class="ph">[pegar]</span>.
+      </div>
+    </article>
+
+    <!-- 3 · El ordenador de caos -->
+    <article class="card">
+      <div class="head">
+        <span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#132946" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h.01"/><path d="M8 6h13"/><path d="M3 12h.01"/><path d="M8 12h13"/><path d="M3 18h.01"/><path d="M8 18h13"/></svg></span>
+        <h2>El ordenador de caos</h2>
+        <span class="idx">03</span>
+      </div>
+      <p class="use">Notas de reunión, ideas sueltas.</p>
+      <div class="prompt">
+        <span class="label">Prompt</span>
+        Convierte estas notas desordenadas en: una tabla con <span class="ph">[columnas que quieras]</span>, una lista de tareas con responsable, y lo que quedó sin decidir. Notas: <span class="ph">[pegar]</span>.
+      </div>
+    </article>
+
+    <!-- 4 · El comparador -->
+    <article class="card">
+      <div class="head">
+        <span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#132946" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></span>
+        <h2>El comparador</h2>
+        <span class="idx">04</span>
+      </div>
+      <p class="use">Presupuestos, proveedores, opciones.</p>
+      <div class="prompt">
+        <span class="label">Prompt</span>
+        Compara estas <span class="ph">[3]</span> opciones en una tabla con criterios: <span class="ph">[precio, plazo, incluye, riesgos]</span>. Después dame tu recomendación en 2 líneas y qué pregunta haría a cada proveedor antes de decidir. Opciones: <span class="ph">[pegar]</span>.
+      </div>
+    </article>
+
+  </div>
+
+  <footer class="foot">
+    <span>Innovai — Inteligencia artificial para empresas · Material del programa IA Productiva</span>
+    <span class="pg">1 / 2</span>
+  </footer>
+</section>
+
+<!-- ==================== PÁGINA 2 ==================== -->
+<section class="page">
+
+  <div class="conthead">
+    <h2>El recetario · continuación</h2>
+    <span>Recetas 05–08</span>
+  </div>
+
+  <div class="grid">
+
+    <!-- 5 · El traductor con tacto -->
+    <article class="card">
+      <div class="head">
+        <span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#132946" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></span>
+        <h2>El traductor con tacto</h2>
+        <span class="idx">05</span>
+      </div>
+      <p class="use">Clientes internacionales.</p>
+      <div class="prompt">
+        <span class="label">Prompt</span>
+        Traduce este email al <span class="ph">[idioma]</span> manteniendo un tono <span class="ph">[formal/cercano]</span> y adaptando las fórmulas de cortesía a lo habitual en <span class="ph">[país]</span>. Marca entre corchetes cualquier expresión de la que no estés seguro. Texto: <span class="ph">[pegar]</span>.
+      </div>
+    </article>
+
+    <!-- 6 · El cambiador de registro -->
+    <article class="card">
+      <div class="head">
+        <span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#132946" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg></span>
+        <h2>El cambiador de registro</h2>
+        <span class="idx">06</span>
+      </div>
+      <p class="use">De técnico a humano (y viceversa).</p>
+      <div class="prompt">
+        <span class="label">Prompt</span>
+        Reescribe este texto para que lo entienda <span class="ph">[un cliente sin conocimientos técnicos / dirección con prisa]</span>: claro, sin jerga, máximo <span class="ph">[N]</span> palabras, sin perder precisión. Texto: <span class="ph">[pegar]</span>.
+      </div>
+    </article>
+
+    <!-- 7 · El generador de ideas -->
+    <article class="card">
+      <div class="head">
+        <span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#132946" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></span>
+        <h2>El generador de ideas</h2>
+        <span class="idx">07</span>
+      </div>
+      <p class="use">Cuando la página está en blanco.</p>
+      <div class="prompt">
+        <span class="label">Prompt</span>
+        Dame 10 ideas de <span class="ph">[contenido/solución/enfoque]</span> para <span class="ph">[objetivo]</span>, pensadas para <span class="ph">[público]</span>. Variadas entre sí: de la más segura a la más arriesgada. Luego desarrolla las 2 mejores.
+      </div>
+    </article>
+
+    <!-- 8 · El investigador prudente -->
+    <article class="card">
+      <div class="head">
+        <span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#132946" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+        <h2>El investigador prudente</h2>
+        <span class="idx">08</span>
+      </div>
+      <p class="use">Buscar información sin tragársela.</p>
+      <div class="prompt">
+        <span class="label">Prompt</span>
+        Explícame <span class="ph">[tema]</span> aplicado a <span class="ph">[mi caso]</span>. Estructura: qué es, cómo me afecta, opciones, errores comunes. Al final, lista qué datos de tu respuesta debería verificar en fuentes oficiales y dónde.
+      </div>
+    </article>
+
+  </div>
+
+  <div class="reminder">
+    <span class="node" aria-hidden="true"></span>
+    <p><strong>La regla de oro:</strong> la IA redacta el borrador; <span class="cyan">tú decides, revisas y firmas</span>. Siempre. Un prompt que te funciona, al recetario — y compártelo con tu equipo: el banco compartido crece así.</p>
+  </div>
+
+  <footer class="foot">
+    <span>Innovai — Inteligencia artificial para empresas · Material del programa IA Productiva</span>
+    <span class="pg">2 / 2</span>
+  </footer>
+</section>
+
+</body>
+</html>

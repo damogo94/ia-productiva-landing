@@ -1,5 +1,7 @@
 # Materiales internos del curso — no forman parte de la web
 *.pdf
+# …pero los recursos descargables del kit sí se publican
+!recursos/*.pdf
 
 # OS / editor
 .DS_Store

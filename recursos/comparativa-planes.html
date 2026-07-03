@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comparativa · Plan 8 h vs Programa IA Productiva 2026 · Innovai</title>
+<style>
+  @font-face {
+    font-family: 'Inter';
+    src: url('../fonts/inter-var.woff2') format('woff2');
+    font-weight: 400 700;
+    font-display: swap;
+  }
+
+  :root {
+    --ink-950: #07162a;
+    --ink-900: #132946;
+    --ink-700: #425771;
+    --ink-600: #556880;
+    --ink-400: #889aae;
+    --surface-0: #f7fbfd;
+    --surface-100: #e7eef3;
+    --surface-200: #d8e1e8;
+    --accent: #00c3db;
+    --accent-strong: #007694;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 400;
+    color: var(--ink-900);
+    background: var(--surface-100);
+    line-height: 1.55;
+  }
+
+  @page { size: A4; margin: 0; }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--surface-0);
+    margin: 10mm auto;
+    padding: 0 0 0 0;
+    box-shadow: 0 4px 24px rgba(7, 22, 42, 0.12);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  @media print {
+    body { background: none; }
+    .page { margin: 0; box-shadow: none; min-height: auto; }
+  }
+
+  /* ---------- Cabecera ---------- */
+  .head {
+    background: var(--ink-900);
+    color: var(--surface-0);
+    padding: 5.5mm 15mm 5mm;
+  }
+  .head-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3.5mm;
+  }
+  .kicker {
+    font-size: 7.5pt;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-400);
+  }
+  .head h1 {
+    font-size: 17pt;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .head h1 .vs { color: var(--accent); font-weight: 600; }
+  .head p.sub {
+    margin-top: 2mm;
+    font-size: 9pt;
+    color: var(--ink-400);
+    max-width: 150mm;
+    line-height: 1.55;
+  }
+
+  /* ---------- Cuerpo ---------- */
+  .body {
+    padding: 5mm 15mm 2.5mm;
+    flex: 1;
+  }
+
+  /* Cabeceras de columna de producto */
+  .grid {
+    display: grid;
+    grid-template-columns: 30mm 1fr 1fr;
+    border: 1px solid var(--surface-200);
+    border-radius: 2.5mm;
+    overflow: hidden;
+  }
+  .col-head {
+    padding: 2.6mm 3.4mm 2.2mm;
+    border-bottom: 1px solid var(--surface-200);
+  }
+  .col-head.spacer { background: var(--surface-0); }
+  .col-head.plan { background: var(--surface-100); border-left: 1px solid var(--surface-200); }
+  .col-head.prog { background: var(--ink-900); color: var(--surface-0); border-left: 1px solid var(--surface-200); }
+  .col-head .tag {
+    font-size: 6.5pt;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-600);
+    display: block;
+    margin-bottom: 0.8mm;
+  }
+  .col-head.prog .tag { color: var(--ink-400); }
+  .col-head .name {
+    font-size: 11pt;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+  }
+  .col-head .meta {
+    font-size: 7.5pt;
+    color: var(--ink-600);
+    margin-top: 0.6mm;
+  }
+  .col-head.prog .meta { color: var(--ink-400); }
+  .col-head.prog .meta strong { color: var(--accent); font-weight: 600; }
+  .col-head.plan .meta strong { color: var(--accent-strong); font-weight: 600; }
+
+  /* Filas */
+  .dim, .cell {
+    padding: 1.7mm 3.4mm;
+    border-bottom: 1px solid var(--surface-200);
+    font-size: 7.7pt;
+    line-height: 1.42;
+  }
+  .grid > div:nth-last-child(-n+3) { border-bottom: none; }
+  .dim {
+    font-size: 7pt;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-700);
+    line-height: 1.4;
+    padding-top: 3mm;
+  }
+  .cell { border-left: 1px solid var(--surface-200); color: var(--ink-900); }
+  .cell .num {
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--accent-strong);
+  }
+  .cell ul { list-style: none; }
+  .cell ul li {
+    position: relative;
+    padding-left: 4mm;
+    margin-bottom: 0.7mm;
+  }
+  .cell ul li:last-child { margin-bottom: 0; }
+  .cell ul li::before {
+    content: "";
+    position: absolute;
+    left: 0.4mm;
+    top: 1.55mm;
+    width: 1.7mm;
+    height: 1.7mm;
+    background: var(--accent-strong);
+    transform: rotate(45deg);
+  }
+  .muted { color: var(--ink-600); }
+
+  /* Fila de recomendación */
+  .rec .cell { background: var(--surface-100); }
+  .rec .cell strong { font-weight: 700; letter-spacing: -0.01em; }
+
+  /* Banda de ruta de continuidad */
+  .route {
+    margin-top: 3.5mm;
+    background: var(--ink-900);
+    color: var(--surface-0);
+    border-radius: 2.5mm;
+    padding: 2.8mm 5mm;
+    display: flex;
+    align-items: center;
+    gap: 4mm;
+  }
+  .route svg { flex: none; }
+  .route .rt {
+    font-size: 7pt;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 1mm;
+  }
+  .route p { font-size: 8.2pt; line-height: 1.48; color: var(--surface-0); }
+  .route p .dim-t { color: var(--ink-400); }
+
+  /* Nota */
+  .note {
+    margin-top: 2mm;
+    font-size: 7.2pt;
+    color: var(--ink-600);
+    line-height: 1.5;
+  }
+
+  /* Pie */
+  .foot {
+    padding: 0 15mm 3mm;
+    font-size: 7pt;
+    color: var(--ink-600);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 6mm;
+  }
+</style>
+</head>
+<body>
+
+<section class="page">
+
+  <header class="head">
+    <div class="head-top">
+      <span class="kicker">Comparativa de programas · Formación IA para pymes</span>
+      <svg width="102" height="31" viewBox="0 0 118 36" role="img" aria-label="Innovai"><text x="114" y="29" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-size="30" letter-spacing="-0.015em" fill="#f7fbfd"><tspan font-weight="500">Innov</tspan><tspan font-weight="700" dx="-0.3">a&#305;</tspan></text><rect x="106.1" y="6.8" width="5.4" height="5.4" transform="rotate(45 108.8 9.5)" fill="#00c3db"/></svg>
+    </div>
+    <h1>Plan de 8 h <span class="vs">vs</span> Programa IA Productiva 2026</h1>
+    <p class="sub">Dos formas de llevar la IA a tu equipo: una para empezar con buen pie, otra para transformar procesos con resultados medidos.</p>
+  </header>
+
+  <main class="body">
+
+    <div class="grid">
+
+      <!-- Cabeceras de columna -->
+      <div class="col-head spacer"></div>
+      <div class="col-head plan">
+        <span class="tag">Plan formativo</span>
+        <div class="name">IA aplicada al trabajo diario</div>
+        <div class="meta"><strong>8 h</strong> · aula virtual en directo · bonificable FUNDAE</div>
+      </div>
+      <div class="col-head prog">
+        <span class="tag">Programa completo</span>
+        <div class="name">IA Productiva 2026</div>
+        <div class="meta"><strong>8 semanas</strong> · formación + implantación · FUNDAE gestionada</div>
+      </div>
+
+      <!-- Duración -->
+      <div class="dim">Duración</div>
+      <div class="cell"><span class="num">8 horas</span> en 2 sesiones de 4 h o 4 de 2 h — mejor repartido, para practicar entre sesiones.</div>
+      <div class="cell"><span class="num">8 semanas</span>, con <span class="num">16–20 h</span> de formación en 4–5 sesiones y trabajo en paralelo sobre los procesos.</div>
+
+      <!-- Formato -->
+      <div class="dim">Formato</div>
+      <div class="cell">Aula virtual en directo, síncrona y bidireccional. Grupos de 8–12. 70&nbsp;% práctica sobre tareas reales del puesto. No requiere instalar software.</div>
+      <div class="cell">Oferta cerrada todo incluido: diagnóstico inicial + formación en aula virtual (grupos de 8–12) + implantación de 1–3 automatizaciones + soporte 30 días + gestión FUNDAE.</div>
+
+      <!-- A quién va dirigido -->
+      <div class="dim">A quién va dirigido</div>
+      <div class="cell">Equipos de pymes con perfil no técnico y nivel digital básico-medio. <span class="muted">No hace falta saber nada de IA para empezar.</span></div>
+      <div class="cell">Empresas que ya quieren resultados sobre sus procesos: plantillas y herramientas adaptadas a cada rol — ventas, administración, operaciones, marketing — sobre su ERP, CRM y correo.</div>
+
+      <!-- Qué se lleva cada persona -->
+      <div class="dim">Qué se lleva cada persona</div>
+      <div class="cell">
+        <ul>
+          <li>Mapa de oportunidades personal (3 tareas propias)</li>
+          <li>3 prompts afinados y guardados para reutilizar</li>
+          <li>Una tarea real resuelta + plantilla reutilizable</li>
+          <li>Mini-decálogo de uso seguro de IA</li>
+        </ul>
+      </div>
+      <div class="cell">
+        <ul>
+          <li>Plantillas de su departamento y kit de herramientas por rol</li>
+          <li>Un flujo rediseñado en marcha</li>
+          <li>Una automatización funcionando por asistente</li>
+          <li>Su tarea ancla cronometrada: minutos antes y después</li>
+        </ul>
+      </div>
+
+      <!-- Qué se lleva la empresa -->
+      <div class="dim">Qué se lleva la empresa</div>
+      <div class="cell">Autonomía básica del equipo para usar IA en el día a día desde el día siguiente, con criterio de seguridad y privacidad. Como valor añadido posterior: banco de prompts compartido, sesión de refuerzo y canal de consultas acotado.</div>
+      <div class="cell">
+        <ul>
+          <li>Informe de diagnóstico con el mapa de oportunidades y la línea base de tiempos</li>
+          <li>1–3 automatizaciones operativas con guía de mantenimiento en lenguaje llano</li>
+          <li>Informe de resultados a dirección: horas recuperadas por persona y equipo</li>
+          <li>Un equipo autónomo: sabe usar, adaptar y mantener lo implantado</li>
+        </ul>
+      </div>
+
+      <!-- Medición de resultados -->
+      <div class="dim">Medición de resultados</div>
+      <div class="cell">Entregables por módulo + mini-test final. Impacto estimado: línea base de tiempo en 2-3 tareas, ahorro previsto tras el curso y seguimiento a 30 días de las tareas que siguen haciéndose con IA.</div>
+      <div class="cell">Método de la <strong>tarea ancla</strong>: cada persona cronometra una tarea frecuente antes y después. La diferencia × frecuencia = horas/mes recuperadas. El ahorro <strong>se mide, no se estima</strong>, y se entrega en informe final, en horas y en euros.</div>
+
+      <!-- Parte bonificable -->
+      <div class="dim">Parte bonificable FUNDAE</div>
+      <div class="cell">Las <span class="num">8 h</span> completas de la acción formativa (módulos 1 a 4), como aula virtual asimilada a presencial. Los servicios posteriores (refuerzo, canal, medición) quedan fuera del coste bonificado.</div>
+      <div class="cell">La formación de <span class="num">16–20 h</span>. Diagnóstico, implantación y soporte son servicios profesionales no bonificables. La gestión completa de la bonificación está incluida: <span class="muted">tu empresa no toca un papel.</span></div>
+
+      <!-- Recomendación -->
+      <div class="dim rec-dim">Para quién es cada uno</div>
+      <div class="cell rec"><div><strong>Para empezar.</strong> El primer contacto seguro y productivo con la IA: en 8 horas el equipo pasa de cero a usarla con criterio en su trabajo diario.</div></div>
+      <div class="cell rec"><div><strong>Para transformar.</strong> Cuando el objetivo no es "saber de IA" sino recuperar horas: formación + implantación real + informe que demuestra el resultado a dirección.</div></div>
+
+    </div>
+
+    <div class="route">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#00c3db" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17l6-5-6-5"/><path d="M12 17l6-5-6-5"/><line x1="21" y1="6" x2="21" y2="18"/></svg>
+      <div>
+        <span class="rt">Ruta de continuidad</span>
+        <p>No hay que elegir para siempre. Muchas empresas empiezan por el plan de 8 h y, <strong>cuando el equipo ya usa la IA con soltura, dan el salto al programa</strong> — con nueva formación bonificable y la implantación sobre sus propios procesos. <span class="dim-t">El programa es la puerta, no el techo: después, más automatización y nuevas acciones FUNDAE para más equipos o niveles.</span></p>
+      </div>
+    </div>
+
+    <p class="note">Aula virtual con registro de conexiones conforme a los requisitos de FUNDAE. Importes y bonificación estimada, en la propuesta personalizada según el crédito de cada empresa.</p>
+
+  </main>
+
+  <footer class="foot">
+    <span>Innovai — Inteligencia artificial para empresas · Material del programa IA Productiva</span>
+    <span>Comparativa comercial · 2026</span>
+  </footer>
+
+</section>
+
+</body>
+</html>
