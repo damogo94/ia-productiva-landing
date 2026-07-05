@@ -400,13 +400,15 @@
     .slider-row{margin-top:1.6rem}
     .slider-row .lab{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;font-size:.9375rem;font-weight:600}
     .slider-row output{font-variant-numeric:tabular-nums;font-weight:700}
-    input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;cursor:pointer;margin-top:.35rem}
-    input[type=range]::-webkit-slider-runnable-track{height:8px;border-radius:9999px;background:var(--ink-500)}
+    input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;cursor:pointer;margin-top:.35rem;--fill:0%}
+    /* Relleno de progreso: parte recorrida en ink-300 (claro) sobre track ink-600. Neutro a propósito: no gasta el acento (reservado a cifras clave). */
+    input[type=range]::-webkit-slider-runnable-track{height:8px;border-radius:9999px;background:linear-gradient(90deg,var(--ink-300) var(--fill),var(--ink-600) var(--fill))}
     input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:26px;height:26px;border-radius:9999px;background:#fff;border:3px solid var(--accent-strong);box-shadow:0 1px 4px rgba(7,22,42,.25);margin-top:-9px;transition:transform .12s ease}
     input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.08)}
     input[type=range]:focus-visible{outline:none}
     input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 3px #fff,0 0 0 6px var(--accent-strong)}
-    input[type=range]::-moz-range-track{height:8px;border-radius:9999px;background:var(--ink-500)}
+    input[type=range]::-moz-range-track{height:8px;border-radius:9999px;background:var(--ink-600)}
+    input[type=range]::-moz-range-progress{height:8px;border-radius:9999px;background:var(--ink-300)}
     input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:9999px;background:#fff;border:3px solid var(--accent-strong);box-shadow:0 1px 4px rgba(7,22,42,.25)}
     input[type=range]:focus-visible::-moz-range-thumb{box-shadow:0 0 0 3px #fff,0 0 0 6px var(--accent-strong)}
     .calc-res-euros{font-size:clamp(3.6rem,2.6rem + 4.5vw,6.5rem);color:var(--accent)}
@@ -486,6 +488,7 @@
     .opt .box{display:block;border-radius:.75rem;border:1px solid var(--ink-500);background:#fff;padding:.75rem .9rem;font-size:.875rem;transition:border-color .18s ease,background-color .18s ease,box-shadow .18s ease}
     .opt input:checked+.box{border-color:var(--accent-strong);background:var(--accent-soft);box-shadow:0 0 0 1px var(--accent-strong) inset}
     .opt input:focus-visible+.box{outline:2px solid var(--focus);outline-offset:2px}
+    .opt:hover input:not(:checked)+.box{border-color:var(--accent-strong)}
     .err{display:none;margin-top:1.1rem;align-items:center;gap:.5rem;font-size:.875rem;font-weight:600;color:var(--danger)}
     .err.show{display:flex}
     .wiz-nav{margin-top:1.5rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem}
@@ -499,8 +502,9 @@
     /* ============ FAQ ============ */
     .faq{border-top:1px solid var(--hair)}
     .faq details{border-bottom:1px solid var(--hair)}
-    .faq summary{display:flex;align-items:center;justify-content:space-between;gap:1.25rem;padding:1.3rem 0;font-weight:700;font-size:1.0625rem;cursor:pointer;list-style:none}
+    .faq summary{display:flex;align-items:center;justify-content:space-between;gap:1.25rem;padding:1.3rem 0;font-weight:700;font-size:1.0625rem;cursor:pointer;list-style:none;transition:color .15s ease}
     .faq summary::-webkit-details-marker{display:none}
+    .faq summary:hover{color:var(--accent-strong)}
     .faq .plus{flex-shrink:0;display:grid;place-items:center;width:1.6rem;height:1.6rem;color:var(--accent-strong);transition:transform .2s ease}
     .faq details[open] .plus{transform:rotate(45deg)}
     .faq .resp{padding:0 0 1.4rem;font-size:.9375rem;color:var(--ink-600);max-width:62ch}
@@ -544,6 +548,7 @@
       .cta:hover,.head-cta:hover{transform:none}
       .nav-link::after{transition:none}
       .faq .plus{transition:none}
+      .faq summary{transition:none}
       input[type=range]::-webkit-slider-thumb{transition:none}
       input[type=range]::-webkit-slider-thumb:hover{transform:none}
     }
@@ -618,6 +623,7 @@
             <a href="#calculadora">Calculadora de ahorro</a>
             <a href="#departamentos">Por departamento</a>
             <a href="#fundae">FUNDAE</a>
+            <a href="#subvenciones">Subvenciones</a>
             <a href="#faq">Preguntas frecuentes</a>
             <a href="#recursos">Recursos gratis</a>
             <a href="#diagnostico" class="sheet-cta">Diagnóstico gratis</a>
@@ -690,7 +696,7 @@
           </p>
 
           <div class="rows">
-            <div><span>Formación en aula virtual</span><b>8 ó 16 h</b></div>
+            <div><span>Formación en aula virtual</span><b>8 o 16 h</b></div>
             <div><span>Coste para el trabajador</span><b>0 €</b></div>
           </div>
         </aside>
@@ -799,7 +805,7 @@
         <!-- Diagrama del método · vertical (móvil, VISIBLE — no oculto) -->
         <ol class="metodo-v" aria-label="Las cuatro fases del método">
           <li>01 · Diagnóstico <span class="t">la foto inicial de tus procesos</span></li>
-          <li>02 · Formación <span class="t">8 ó 16 h, bonificable FUNDAE</span></li>
+          <li>02 · Formación <span class="t">8 o 16 h, bonificable FUNDAE</span></li>
           <li>03 · Consultoría <span class="t">plan de automatización a medida</span></li>
           <li>04 · Implementación <span class="t">automatizaciones funcionando · +30% tiempo/sem</span></li>
         </ol>
@@ -815,7 +821,7 @@
             <span class="ghost" aria-hidden="true">02</span>
             <span class="rombo-num" aria-hidden="true"><i></i><b>02</b></span>
             <h3>Formación adaptada</h3>
-            <p>8 h o 16 h en aula virtual, sobre las tareas reales de cada equipo. Bonificable por FUNDAE.</p>
+            <p>8 o 16 h en aula virtual, sobre las tareas reales de cada equipo. Bonificable por FUNDAE.</p>
           </div>
           <div class="fase fade-up">
             <span class="ghost" aria-hidden="true">03</span>
@@ -1033,12 +1039,12 @@
 
             <div class="stat-stack">
               <div><b>0 €</b><span>de coste para el trabajador</span></div>
-              <div><b>8–16 h</b><span>en aula virtual, con registro de conexiones</span></div>
+              <div><b>8 o 16 h</b><span>en aula virtual, con registro de conexiones</span></div>
               <div><b>Papeleo</b><span>comunicación y evidencias gestionadas por nosotros</span></div>
             </div>
             <p class="xs" style="margin-top:1.1rem;color:var(--ink-300)">
               *La bonificación depende del crédito disponible de la empresa, del nº de asistentes y del cumplimiento de los
-              requisitos de FUNDAE. La formación (8–16 h) es la parte bonificable; el diagnóstico, la consultoría y la
+              requisitos de FUNDAE. La formación (8 o 16 h) es la parte bonificable; el diagnóstico, la consultoría y la
               implantación son servicios que se presupuestan aparte según tu caso.
             </p>
           </div>
@@ -1602,6 +1608,8 @@
     let srTimer = null;
     function calc() {
       const personas = +cP.value, horas = +cH.value, coste = +cC.value;
+      // Relleno de progreso de cada slider (parte recorrida) — microinteracción
+      [cP, cH, cC].forEach((el) => el.style.setProperty('--fill', ((el.value - el.min) / (el.max - el.min) * 100) + '%'));
       document.getElementById('out-personas').textContent = personas;
       document.getElementById('out-horas').textContent = horas;
       document.getElementById('out-coste').textContent = coste + ' €';
