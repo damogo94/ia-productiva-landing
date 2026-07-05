@@ -371,6 +371,7 @@
         <a href="#departamentos" class="nav-link hover:text-surface-0 transition">Por departamento</a>
         <a href="#fundae" class="nav-link hover:text-surface-0 transition">FUNDAE</a>
         <a href="#faq" class="nav-link hover:text-surface-0 transition">Preguntas</a>
+        <a href="#recursos" class="nav-link hover:text-surface-0 transition">Recursos</a>
       </nav>
       <div class="flex items-center gap-2">
         <a href="#diagnostico" class="hidden sm:inline-flex rounded-full bg-surface-0 px-5 py-2 text-sm font-600 text-ink-900 hover:bg-surface-100 shadow-[var(--shadow-cta)] hover:-translate-y-0.5 active:translate-y-0 transition">Diagnóstico gratis</a>
@@ -385,6 +386,7 @@
             <a href="#departamentos" class="block rounded-lg px-3 py-2 hover:bg-white/5 hover:text-surface-0">Por departamento</a>
             <a href="#fundae" class="block rounded-lg px-3 py-2 hover:bg-white/5 hover:text-surface-0">FUNDAE</a>
             <a href="#faq" class="block rounded-lg px-3 py-2 hover:bg-white/5 hover:text-surface-0">Preguntas frecuentes</a>
+            <a href="#recursos" class="block rounded-lg px-3 py-2 hover:bg-white/5 hover:text-surface-0">Recursos gratis</a>
             <a href="#diagnostico" class="mt-1 block rounded-lg bg-surface-0 px-3 py-2 text-center font-600 text-ink-900">Diagnóstico gratis</a>
           </div>
         </details>
@@ -1098,6 +1100,111 @@
       </div>
     </section>
 
+    <!-- ============ 8d · RECURSOS / LEAD MAGNET ============ -->
+    <section id="recursos" class="border-y border-surface-200 bg-surface-50">
+      <div class="mx-auto max-w-6xl px-6 py-24 md:py-32">
+        <div class="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
+
+          <!-- Columna: qué te llevas -->
+          <div>
+            <p class="inline-flex items-center gap-2.5 text-2xs font-600 uppercase tracking-[0.2em] text-ink-600 mb-4">
+              <span class="h-px w-8 bg-ink-500" aria-hidden="true"></span>Recursos gratuitos
+            </p>
+            <h2 class="text-fluid-h2 font-600">Llévate el kit de arranque del programa</h2>
+            <p class="mt-4 text-body-lg text-ink-600">Tres recursos que usamos en la formación, listos para imprimir y usar con tu equipo desde hoy.</p>
+
+            <ul class="mt-8 space-y-3">
+              <li class="card p-4 flex items-center gap-4">
+                <span class="h-11 w-11 shrink-0 rounded-xl bg-surface-100 ring-1 ring-surface-200 flex items-center justify-center" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ink-700)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                </span>
+                <span>
+                  <span class="block font-600 text-ink-900">Las 5 piezas de un buen prompt</span>
+                  <span class="block text-sm text-ink-600">Chuleta para tener al lado del teclado · 1 página</span>
+                </span>
+              </li>
+              <li class="card p-4 flex items-center gap-4">
+                <span class="h-11 w-11 shrink-0 rounded-xl bg-surface-100 ring-1 ring-surface-200 flex items-center justify-center" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ink-700)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4H7a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V8z"/><path d="M14 4v4h4"/><path d="M9 13h6M9 16h6"/></svg>
+                </span>
+                <span>
+                  <span class="block font-600 text-ink-900">8 prompts listos para copiar</span>
+                  <span class="block text-sm text-ink-600">El recetario del curso, con huecos para adaptar · 2 páginas</span>
+                </span>
+              </li>
+              <li class="card p-4 flex items-center gap-4">
+                <span class="h-11 w-11 shrink-0 rounded-xl bg-surface-100 ring-1 ring-surface-200 flex items-center justify-center" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ink-700)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg>
+                </span>
+                <span>
+                  <span class="block font-600 text-ink-900">El semáforo de los datos</span>
+                  <span class="block text-sm text-ink-600">Qué puede entrar en la IA y qué no · póster 1 página</span>
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Columna: captación -->
+          <div class="rounded-4xl bg-white border border-surface-200 shadow-[var(--shadow-card)] p-6 sm:p-8">
+
+            <!-- Formulario (se oculta al desbloquear) -->
+            <form id="kit-form" novalidate>
+              <input type="hidden" name="access_key" value="TU_ACCESS_KEY" />
+              <input type="hidden" name="from_name" value="Innovai · Landing IA Productiva" />
+              <input type="hidden" name="subject" value="Descarga del kit de recursos" />
+              <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+              <h3 class="text-xl font-600 text-ink-900">Te enviamos el kit al correo del trabajo</h3>
+              <p class="mt-1.5 text-sm text-ink-600">Tres PDF del material del programa. Sin spam: solo el kit y, si quieres, novedades.</p>
+
+              <div class="mt-5">
+                <label class="block text-sm font-600 mb-1.5" for="kit-email">Email</label>
+                <input id="kit-email" name="email" type="email" required class="w-full rounded-xl border border-surface-200 bg-white px-4 py-3 text-sm focus:border-accent-strong" placeholder="tu@empresa.com" />
+              </div>
+
+              <label class="mt-4 flex items-start gap-2.5 text-xs text-ink-600 py-1.5 cursor-pointer">
+                <input id="kit-consent" name="consent_privacidad" type="checkbox" required class="mt-0.5 h-5 w-5 shrink-0" />
+                <span>He leído y acepto la <a href="privacidad.html" target="_blank" rel="noopener" class="underline text-ink-900 hover:text-accent-strong">política de privacidad</a> para recibir el kit y comunicaciones relacionadas. <span class="text-danger">*</span></span>
+              </label>
+
+              <p id="kit-error" class="hidden mt-4 items-center gap-2 text-sm font-600 text-danger" role="alert">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="shrink-0"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+                <span id="kit-error-text"></span>
+              </p>
+
+              <button type="submit" id="kit-btn" class="mt-5 w-full rounded-full bg-ink-900 px-7 py-3.5 text-sm font-600 text-white hover:bg-ink-800 shadow-[var(--shadow-cta)] hover:-translate-y-0.5 active:translate-y-0 transition disabled:opacity-60 disabled:cursor-wait disabled:hover:translate-y-0">Quiero el kit gratis</button>
+              <p class="mt-3 text-center text-2xs text-ink-600">Descarga inmediata tras enviar. Material del programa IA Productiva.</p>
+            </form>
+
+            <!-- Descargas (ocultas hasta desbloquear) -->
+            <div id="kit-descargas" class="hidden" role="status" aria-live="polite" tabindex="-1">
+              <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-success/10 ring-1 ring-success/30" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </span>
+              <h3 class="mt-4 text-center text-xl font-600 text-ink-900">Kit desbloqueado</h3>
+              <p class="mt-1.5 text-center text-sm text-ink-600">Descarga los tres recursos:</p>
+              <div class="mt-5 space-y-2.5">
+                <a href="recursos/chuleta-5-piezas.pdf" download class="flex items-center justify-between gap-3 rounded-xl border border-surface-200 bg-surface-0 px-4 py-3 text-sm font-600 text-ink-900 hover:border-accent-strong hover:bg-surface-50 transition">
+                  Las 5 piezas de un buen prompt
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-strong)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="shrink-0"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+                </a>
+                <a href="recursos/8-prompts.pdf" download class="flex items-center justify-between gap-3 rounded-xl border border-surface-200 bg-surface-0 px-4 py-3 text-sm font-600 text-ink-900 hover:border-accent-strong hover:bg-surface-50 transition">
+                  8 prompts listos para copiar
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-strong)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="shrink-0"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+                </a>
+                <a href="recursos/semaforo-datos.pdf" download class="flex items-center justify-between gap-3 rounded-xl border border-surface-200 bg-surface-0 px-4 py-3 text-sm font-600 text-ink-900 hover:border-accent-strong hover:bg-surface-50 transition">
+                  El semáforo de los datos
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-strong)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="shrink-0"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+                </a>
+              </div>
+              <p class="mt-5 text-center text-sm text-ink-600">¿Quieres saber cuánto tiempo puede recuperar tu equipo? <a href="#diagnostico" class="font-600 text-ink-900 underline underline-offset-2 hover:text-accent-strong">Pide el diagnóstico gratuito</a>.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ 9 · CTA FINAL ============ -->
     <section class="mx-auto max-w-6xl px-6 py-24 md:py-28 text-center">
       <h2 class="text-fluid-h1 font-600 max-w-3xl mx-auto">
@@ -1371,6 +1478,55 @@
       return false;
     }
     form.addEventListener('submit', submitDiag);
+
+    // ---- Kit de recursos (lead magnet) ----
+    // ⚠️ [PENDIENTE] Usa el mismo access_key de Web3Forms que el diagnóstico.
+    const kitForm = document.getElementById('kit-form');
+    const kitDl = document.getElementById('kit-descargas');
+    const KIT_KEY = 'kitUnlocked_v1';
+    function kitUnlock(focus) {
+      kitForm.classList.add('hidden');
+      kitDl.classList.remove('hidden');
+      if (focus) kitDl.focus();
+    }
+    function kitError(text) {
+      const el = document.getElementById('kit-error');
+      document.getElementById('kit-error-text').textContent = text;
+      el.classList.remove('hidden');
+      el.classList.add('flex');
+    }
+    function kitClearError() {
+      const el = document.getElementById('kit-error');
+      document.getElementById('kit-error-text').textContent = '';
+      el.classList.add('hidden');
+      el.classList.remove('flex');
+    }
+    kitForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      kitClearError();
+      const email = document.getElementById('kit-email');
+      const consent = document.getElementById('kit-consent');
+      if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        kitError('Revisa el email: no parece válido.'); email.focus(); return;
+      }
+      if (!consent.checked) {
+        kitError('Debes aceptar la política de privacidad para recibir el kit.'); consent.focus(); return;
+      }
+      const btn = document.getElementById('kit-btn');
+      btn.disabled = true; btn.textContent = 'Enviando…';
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(kitForm) });
+        const json = await res.json();
+        if (!json.success) throw new Error(json.message || 'Error de envío');
+        try { localStorage.setItem(KIT_KEY, '1'); } catch (e2) {}
+        kitUnlock(true);
+      } catch (err) {
+        btn.disabled = false; btn.textContent = 'Quiero el kit gratis';
+        kitError('No se ha podido enviar. Inténtalo de nuevo en un momento.');
+      }
+    });
+    // Si ya desbloqueó el kit en una visita anterior, mostrar las descargas directamente
+    try { if (localStorage.getItem(KIT_KEY) === '1') kitUnlock(false); } catch (e3) {}
 
     // Render inicial SIN mover el foco (nextStep/prevStep sí lo mueven).
     showStep(1, false);
