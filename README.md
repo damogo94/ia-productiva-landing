@@ -4,7 +4,7 @@ Landing de **Innovai** (inteligencia artificial para empresas) para captar leads
 formación en IA bonificable vía FUNDAE + consultoría y automatización. La conversión
 principal es el formulario de diagnóstico (wizard de 4 pasos).
 
-Sitio estático sin build: Tailwind CSS (Play CDN) + Inter variable autoalojada.
+Sitio estático sin build: CSS propio escrito a mano (sin frameworks ni CDN) + Inter variable autoalojada. Rediseño «Primera Plana» (editorial: hairlines, cifras-hito con count-up, data-viz SVG honesta, 3 portadas oscuras).
 
 ## Estructura
 
@@ -37,8 +37,7 @@ El formulario envía las solicitudes por email mediante [Web3Forms](https://web3
 - Dominio definitivo en `canonical`, Open Graph y JSON-LD (`TU-DOMINIO.com`) + `og-image.png` 1200×630.
 - Nº de registro FUNDAE y datos del responsable (razón social, NIF, email) en la franja de credibilidad, la capa RGPD del formulario y las páginas legales.
 - Cambiar `<meta name="robots">` de `noindex` a `index,follow`.
-- Vídeos reales para la sección de casos (los contenedores 16:9 ya están preparados).
-- Opcional (rendimiento): migrar Tailwind del CDN a build propio (último tercero restante).
+- Caso real para la antigua sección «casos» (retirada temporalmente del HTML; el bloque original está en el historial de git). Reintroducir como un caso anónimo contado en cifras.
 
 ## Despliegue
 
