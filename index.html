@@ -153,10 +153,7 @@
        · ink-500 como UI (bordes/rombos) vs #fff  3.8:1  ✓ (mín. 3)
        Doctrina del acento: CTA primario SIEMPRE bg-accent sobre oscuro; sobre claro el
        CTA es ink-950 (cian de relleno sobre blanco prohibido: 2.1:1). UNA frase marcada
-       por sección. Cian en data-viz = solo el delta positivo (lo recuperado).
-       Excepción del hero (consciente): la palabra clave del h1 («con IA») va en accent
-       con glow sutil — única palabra de texto corrido en acento de toda la página
-       (accent sobre ink-950: 8.5:1 ✓). */
+       por sección. Cian en data-viz = solo el delta positivo (lo recuperado). */
     :root{
       --ink-950:#07162a; --ink-900:#132946; --ink-800:#263c57; --ink-700:#425771;
       --ink-600:#556880; --ink-500:#708298; --ink-400:#889aae; --ink-300:#a9b9ca;
@@ -218,8 +215,6 @@
     /* ============ VOCES TIPOGRÁFICAS (Primera Plana) ============ */
     .display{font-size:clamp(2.5rem,1.55rem + 4vw,4.5rem);line-height:1.03;letter-spacing:-.033em;font-weight:700}
     .display .soft{font-weight:400;color:var(--ink-400)}
-    /* Palabra clave del h1 en acento con glow (excepción consciente — ver doctrina en TOKENS) */
-    .display .ia{color:var(--accent);font-weight:700;text-shadow:0 0 16px rgba(0,195,219,.40),0 0 44px rgba(0,195,219,.16)}
     .hito{font-weight:700;letter-spacing:-.04em;line-height:.95;font-variant-numeric:tabular-nums}
     .hito-xl{font-size:clamp(4.25rem,2.6rem + 7.5vw,8rem)}
     .hito-lg{font-size:clamp(3.25rem,2.2rem + 4.5vw,6rem)}
@@ -546,25 +541,11 @@
        y el canvas nunca intercepta el puntero. Presupuesto: canvas 2D propio, cero librerías. */
     .hero-field{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
     .hero>.wrap{position:relative;z-index:1}
-    /* Logo — NACIMIENTO: la constelación del hero ensambla el rombo y lo entrega a la
-       cabecera; el nodo "aterriza" en la ı (nodeArrive, delay sincronizado con T_FLY1
-       del JS). El JS añade .viva al <html> solo si la coreografía corre (con reduced-
-       motion o sin JS el nodo es estático) y .docked al terminar el aterrizaje. */
-    @keyframes nodeArrive{0%{transform:scale(0) rotate(120deg);opacity:0}62%{transform:scale(1.4) rotate(-10deg);opacity:1}100%{transform:none;opacity:1}}
+    /* Logo: el nodo cae y encaja sobre la ı al cargar (una vez); late al pasar el cursor */
+    @keyframes nodeDrop{0%{transform:translateY(-15px) rotate(120deg);opacity:0}55%{transform:translateY(2.5px) rotate(0deg);opacity:1}100%{transform:none;opacity:1}}
     @keyframes nodePulse{0%{transform:scale(1)}45%{transform:scale(1.5) rotate(45deg)}100%{transform:scale(1)}}
-    .viva .logo-node-w:not(.docked){animation:nodeArrive .55s cubic-bezier(.34,1.56,.64,1) 2.2s both}
-    /* Nodo VIVO: late al pasar el cursor y al cruzar de sección (.beat lo pone el JS) */
+    .js .logo-node-w{animation:nodeDrop .75s cubic-bezier(.34,1.56,.64,1) .35s both}
     .logo-link:hover .logo-node-w,.logo-link:focus-visible .logo-node-w{animation:nodePulse .5s ease}
-    .logo-link:hover .logo-node-w.docked,.logo-link:focus-visible .logo-node-w.docked,.viva .logo-node-w.docked.beat{animation:nodePulse .5s ease}
-    /* ...y al hover emite 4 micro-nodos que se reabsorben (satélites del rombo).
-       Salen con retardo y recorrido amplio para despejar el nodo mientras late a 1.5×. */
-    .logo-sats .sat{opacity:0}
-    .logo-link:hover .logo-sats .sat,.logo-link:focus-visible .logo-sats .sat{animation:satBurst .62s ease-out .1s both}
-    .logo-link:hover .logo-sats .s2,.logo-link:focus-visible .logo-sats .s2{animation-delay:.16s}
-    .logo-link:hover .logo-sats .s3,.logo-link:focus-visible .logo-sats .s3{animation-delay:.12s}
-    .logo-link:hover .logo-sats .s4,.logo-link:focus-visible .logo-sats .s4{animation-delay:.19s}
-    @keyframes satBurst{0%{opacity:0;transform:translate(0,0) scale(.5)}22%{opacity:1}62%{opacity:.85}100%{opacity:0;transform:translate(var(--sx),var(--sy)) scale(1)}}
-    .logo-sats .s1{--sx:14px;--sy:-10px}.logo-sats .s2{--sx:13px;--sy:11px}.logo-sats .s3{--sx:-13px;--sy:11px}.logo-sats .s4{--sx:-14px;--sy:-10px}
     /* Scrollytelling del método: sticky nativo (el scroll NUNCA se secuestra).
        Requiere motion + JS; en reduced/no-JS la sección no existe. En móvil corre con
        presupuesto reducido (menos partículas, reacción al dedo en vez de al cursor). */
@@ -604,9 +585,8 @@
 
     /* ============ MOVIMIENTO REDUCIDO ============ */
     @media (prefers-reduced-motion: reduce){
-      .viva .logo-node-w:not(.docked){animation:none;opacity:1}
-      .logo-link:hover .logo-node-w,.logo-link:focus-visible .logo-node-w,.viva .logo-node-w.docked.beat{animation:none}
-      .logo-sats .sat{animation:none !important;opacity:0 !important}
+      .js .logo-node-w{animation:none}
+      .logo-link:hover .logo-node-w,.logo-link:focus-visible .logo-node-w{animation:none}
       .cta,.cta:hover{transform:none}
       .cell-feat::after{content:none}
       .js .fade-up,.js:not(.no-reveal) .fade-up{opacity:1;transform:none;transition:none}
@@ -629,7 +609,7 @@
       .band-dark,.calc-card,.cell-feat{background:#fff !important;color:#000 !important}
       .band-dark .lead,.cell-feat li,.stat-stack span,.hero .standfirst,.ficha .pie,.pasos-ed li,.urgencia-line,.trust-line{color:#333 !important}
       .band-dark b,.band-dark strong,.pasos-ed li b,.urgencia-line b,.ficha .rows b{color:#000 !important}
-      .num-accent,.calc-res-euros,.calc-mini b,.stat-stack b,.band-dark .folio,.kicker,.kicker .hl,.display .ia{color:var(--accent-strong) !important;text-shadow:none !important}
+      .num-accent,.calc-res-euros,.calc-mini b,.stat-stack b,.band-dark .folio,.kicker,.kicker .hl{color:var(--accent-strong) !important}
       .mark{background:none !important}
       .fade-up{opacity:1 !important;transform:none !important}
     }
@@ -672,16 +652,7 @@
         <!-- Wordmark expandido (no el <symbol>) para poder animar el nodo por separado -->
         <svg width="85" height="26" viewBox="0 0 118 36" role="img" aria-label="Innovai">
           <text x="114" y="29" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-size="30" letter-spacing="-0.015em" fill="currentColor"><tspan font-weight="500">Innov</tspan><tspan font-weight="700" dx="-0.3">a&#305;</tspan></text>
-          <g transform="translate(108.8 9.5)">
-            <g class="logo-node-w"><use href="#innovai-node"/></g>
-            <!-- Satélites del nodo vivo: 4 micro-nodos que orbitan-estallan al hover (CSS satBurst) -->
-            <g class="logo-sats" aria-hidden="true">
-              <g class="sat s1"><rect x="-1.1" y="-1.1" width="2.2" height="2.2" transform="rotate(45)" fill="var(--accent, #00c3db)"/></g>
-              <g class="sat s2"><rect x="-1.1" y="-1.1" width="2.2" height="2.2" transform="rotate(45)" fill="var(--accent, #00c3db)"/></g>
-              <g class="sat s3"><rect x="-1.1" y="-1.1" width="2.2" height="2.2" transform="rotate(45)" fill="var(--accent, #00c3db)"/></g>
-              <g class="sat s4"><rect x="-1.1" y="-1.1" width="2.2" height="2.2" transform="rotate(45)" fill="var(--accent, #00c3db)"/></g>
-            </g>
-          </g>
+          <g transform="translate(108.8 9.5)"><g class="logo-node-w"><use href="#innovai-node"/></g></g>
         </svg>
       </a>
       <nav class="site-nav" aria-label="Navegación principal">
@@ -730,7 +701,7 @@
 
           <h1 class="display">
             Recupera horas de trabajo
-            <span class="soft">cada semana <span class="ia">con IA</span></span>
+            <span class="soft">cada semana con IA</span>
           </h1>
 
           <p class="standfirst">
@@ -1960,61 +1931,30 @@
         return { x: cx + (a[0] + (b[0] - a[0]) * lt) * R, y: cy + (a[1] + (b[1] - a[1]) * lt) * R };
       }
 
-      // ---------- A · Constelación del hero + NACIMIENTO DEL LOGO ----------
-      // Coreografía (una vez por carga): 1) las partículas entran y 26 ensamblan el
-      // rombo de marca en el escenario del hero · 2) el anillo vuela hacia la ı del
-      // wordmark encogiéndose (cruza el borde superior del hero y desaparece tras la
-      // cabecera) · 3) el nodo "aterriza" en el logo (nodeArrive en CSS: su delay
-      // debe casar con T_FLY1) y el anillo se disuelve en el campo. Después el
-      // enjambre queda vivo: ATRAE hacia el cursor y vira a cian por cercanía
-      // (antes repelía y quedaba oculto tras la ficha). Al bajar, el hero entrega el
-      // enjambre: deriva hacia el caos de la escena 01 del scrolly mientras el canvas
-      // se apaga. Presupuesto intacto: canvas 2D, IO-gating, DPR≤2, pasivos, semilla.
+      // ---------- A · Constelación del nodo en el hero (presupuesto adaptado al dispositivo) ----------
       const heroSec = document.querySelector('.hero');
       if (heroSec) {
-        document.documentElement.classList.add('viva'); // habilita el nodeArrive del logo (CSS)
         const cv = document.createElement('canvas');
         cv.className = 'hero-field'; cv.setAttribute('aria-hidden', 'true');
         heroSec.insertBefore(cv, heroSec.firstChild);
         const f = makeCanvas(cv);
-        const N = DESK ? 120 : 70, RING = DESK ? 26 : 18;
-        const LINK2 = DESK ? 12100 : 6400; // umbral² de los hilos del campo
-        const T_FLY0 = 1.85, T_FLY1 = 2.2; // hitos del vuelo (s) — el CSS aterriza en T_FLY1
-        const R_ATTR = 170, R_ATTR2 = R_ATTR * R_ATTR; // radio de atracción del cursor
-        const ease01 = (x) => x * x * (3 - 2 * x);
-        let homes = [], logoT = null;
-        function findLogoT() {
-          // centro del nodo del wordmark en coordenadas del canvas (y suele ser <0:
-          // el anillo sale por el borde y "se esconde" tras la cabecera — buscado)
-          const el = document.querySelector('.logo-node-w');
-          if (!el) { logoT = { x: f.w * 0.1, y: -30 }; return; }
-          const r = el.getBoundingClientRect(), c = cv.getBoundingClientRect();
-          logoT = { x: r.left + r.width / 2 - c.left, y: r.top + r.height / 2 - c.top };
-        }
+        const N = DESK ? 110 : 64, RING = DESK ? 26 : 18;
+        const LINK2 = DESK ? 10000 : 6400; // umbral² de los hilos del campo
+        let homes = [];
         function buildHomes() {
           homes = [];
+          const cx = f.w * 0.55, cy = f.h * 0.16, R = Math.min(f.w, f.h) * 0.12;
+          for (let i = 0; i < RING; i++) homes.push(Object.assign(romboPoint(cx, cy, R, i / RING), { acc: true }));
           let seed = 42;
           const rand = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
-          // TODAS las casas son de campo disperso; el anillo (i<RING) solo obedece a la
-          // coreografía mientras dura, y al disolverse vuelve a su casa de campo.
-          for (let i = 0; i < N; i++) {
-            homes.push({ x: rand() * f.w, y: rand() * f.h, acc: i < RING ? i % 3 === 0 : rand() < 0.22 });
-          }
-          findLogoT();
+          for (let i = RING; i < N; i++) homes.push({ x: rand() * f.w, y: rand() * f.h, acc: rand() < 0.16 });
         }
         buildHomes();
-        // Escenario de formación del rombo: franja alta y despejada del hero (sobre el
-        // kicker, bajo la nav) — el anillo nace de un halo suelto alrededor del punto.
-        const FX = () => f.w * 0.42, FY = () => f.h * 0.17, FR = () => Math.min(f.w, f.h) * 0.11;
         const pts = [];
-        for (let i = 0; i < N; i++) {
-          if (i < RING) {
-            const a = Math.random() * 6.28, rr = FR() * (1.8 + Math.random() * 1.6);
-            pts.push({ x: FX() + Math.cos(a) * rr, y: FY() + Math.sin(a) * rr, vx: 0, vy: 0, s: 1.9 + Math.random() * 1.4, ph: Math.random() * 6.28, prox: 0 });
-          } else {
-            pts.push({ x: Math.random() * f.w, y: -60 - Math.random() * f.h * 0.6, vx: 0, vy: 0, s: 1.7 + Math.random() * 2.2, ph: Math.random() * 6.28, prox: 0 });
-          }
-        }
+        for (let i = 0; i < N; i++) pts.push({
+          x: Math.random() * f.w, y: -60 - Math.random() * f.h * 0.6,
+          vx: 0, vy: 0, s: 1.6 + Math.random() * 2.1, ph: Math.random() * 6.28
+        });
         let mx = -9999, my = -9999;
         if (FINE) {
           heroSec.addEventListener('mousemove', (e) => {
@@ -2033,121 +1973,46 @@
         let heroOn = true;
         new IntersectionObserver((en) => { heroOn = en[0].isIntersecting; }).observe(heroSec);
         window.addEventListener('resize', () => { f.resize(); buildHomes(); });
-        // mezcla ink→accent por cercanía al cursor: #5d7186 (93,113,134) → #00c3db (0,195,219)
-        function mixInk(k) {
-          return 'rgb(' + Math.round(93 - 93 * k) + ',' + Math.round(113 + 82 * k) + ',' + Math.round(134 + 85 * k) + ')';
-        }
         const t0 = performance.now();
         (function heroTick(now) {
           if (heroOn && !document.hidden) {
             const ctx = f.ctx, t = (now - t0) / 1000;
-            // fase de vuelo del anillo hacia el logo (0 = formado en escena, 1 = encajado)
-            const flight = t < T_FLY0 ? 0 : t < T_FLY1 ? ease01((t - T_FLY0) / (T_FLY1 - T_FLY0)) : 1;
-            const birth = t < T_FLY1; // ¿el anillo sigue coreografiado?
-            // entrega al scrolly: al bajar, el canvas se apaga y el enjambre deriva
-            const hr = heroSec.getBoundingClientRect();
-            const sink = Math.min(1, Math.max(0, -hr.top / Math.max(1, hr.height * 0.85)));
-            cv.style.opacity = (1 - sink).toFixed(3);
-            // escenario del rombo (franja alta despejada) → destino (nodo del wordmark)
-            const cx0 = FX(), cy0 = FY(), R0 = FR();
-            const cx = logoT ? cx0 + (logoT.x - cx0) * flight : cx0;
-            const cy = logoT ? cy0 + (logoT.y - cy0) * flight : cy0;
-            const R = R0 * (1 - flight) + 3 * flight;
             ctx.clearRect(0, 0, f.w, f.h);
             for (let i = 0; i < N; i++) {
               const p = pts[i], hm = homes[i];
-              const ringNow = i < RING && birth;
-              let hx, hy, k;
-              if (ringNow) {
-                const rp = romboPoint(cx, cy, R, i / RING);
-                const wob = 2 * (1 - flight); // el rombo respira formado y se tensa en vuelo
-                hx = rp.x + Math.sin(t * 0.9 + p.ph) * wob;
-                hy = rp.y + Math.cos(t * 0.8 + p.ph) * wob;
-                k = 0.05 + flight * 0.04; // ensambla rápido y persigue al anillo en vuelo
-              } else {
-                hx = hm.x + Math.sin(t * 0.4 + p.ph) * 9;
-                hy = hm.y + Math.cos(t * 0.33 + p.ph) * 9;
-                k = 0.015;
-              }
-              p.vx += (hx - p.x) * k; p.vy += (hy - p.y) * k;
-              // ATRACCIÓN al cursor con leve remolino (el anillo en coreografía no responde)
-              if (!ringNow) {
-                const dx = mx - p.x, dy = my - p.y, d2 = dx * dx + dy * dy;
-                if (d2 < R_ATTR2) {
-                  const d = Math.sqrt(d2) || 1, F = (1 - d / R_ATTR) * 0.5;
-                  p.vx += (dx / d) * F - (dy / d) * F * 0.3;
-                  p.vy += (dy / d) * F + (dx / d) * F * 0.3;
-                  p.prox = Math.max(p.prox, 1 - d / R_ATTR);
-                }
-              }
-              p.prox *= 0.94; // el viraje a cian decae suave al alejarse el cursor
-              p.vy += sink * 0.5;
+              const hx = hm.x + Math.sin(t * 0.4 + p.ph) * 9;
+              const hy = hm.y + Math.cos(t * 0.33 + p.ph) * 9;
+              p.vx += (hx - p.x) * 0.015; p.vy += (hy - p.y) * 0.015;
+              const dx = p.x - mx, dy = p.y - my, d2 = dx * dx + dy * dy;
+              if (d2 < 16900) { const d = Math.sqrt(d2) || 1, F = (130 - d) * 0.012; p.vx += dx / d * F; p.vy += dy / d * F; }
               p.vx *= 0.9; p.vy *= 0.9; p.x += p.vx; p.y += p.vy;
             }
-            // anillo del nodo de marca: geometría nítida, se desvanece camino de la cabecera
-            const ringA = birth ? 0.55 * (1 - flight * 0.85) : 0;
-            if (ringA > 0.01) {
-              ctx.strokeStyle = ACCENT; ctx.lineWidth = 1.6;
-              for (let i = 0; i < RING; i++) {
-                const a = pts[i], b = pts[(i + 1) % RING];
-                ctx.globalAlpha = ringA;
-                ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
-              }
-            }
             ctx.lineWidth = 1;
-            // hilos del campo disperso (el anillo no teje hilos mientras actúa: rombo limpio)
+            // anillo del nodo de marca
+            ctx.strokeStyle = ACCENT;
+            for (let i = 0; i < RING; i++) {
+              const a = pts[i], b = pts[(i + 1) % RING];
+              ctx.globalAlpha = 0.25;
+              ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+            }
+            // hilos del campo disperso
             ctx.strokeStyle = FIELD_LINE;
-            for (let i = 0; i < N; i++) for (let j = i + 1; j < N; j++) {
-              if (birth && i < RING) continue;
+            for (let i = RING; i < N; i++) for (let j = i + 1; j < N; j++) {
               const a = pts[i], b = pts[j];
               const dx = a.x - b.x, dy = a.y - b.y, d2 = dx * dx + dy * dy;
               if (d2 < LINK2) {
-                ctx.globalAlpha = 0.09 * (1 - d2 / LINK2);
+                ctx.globalAlpha = 0.06 * (1 - d2 / LINK2);
                 ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
               }
             }
             for (let i = 0; i < N; i++) {
               const p = pts[i], hm = homes[i];
-              const ringNow = i < RING && birth;
-              const acc = ringNow || hm.acc;
-              const g = p.prox;
-              const color = acc ? ACCENT : (g > 0.02 ? mixInk(g) : INK_PART);
-              const size = p.s + g * 0.8 + (ringNow ? 0.9 : 0); // vértices del rombo más rotundos
-              drawNode(ctx, p.x, p.y, size, color, Math.min(1, (ringNow ? 0.95 : acc ? 0.85 : 0.52) + g * 0.3));
+              drawNode(ctx, p.x, p.y, p.s, hm.acc ? ACCENT : INK_PART, hm.acc ? 0.8 : 0.5);
             }
             ctx.globalAlpha = 1;
           }
           requestAnimationFrame(heroTick);
         })(t0);
-      }
-
-      // ---------- A2 · Nodo vivo en la cabecera: encaje y latido por secciones ----------
-      // Al terminar nodeArrive el nodo queda .docked (estable); a partir de ahí late
-      // (nodePulse vía .beat) cada vez que el lector cruza a una sección nueva.
-      const nodeW = document.querySelector('.logo-node-w');
-      if (nodeW) {
-        let lastBeat = '', armed = false;
-        setTimeout(() => { armed = true; }, 3200); // nunca pisar el nacimiento
-        nodeW.addEventListener('animationend', (e) => {
-          if (e.animationName === 'nodeArrive') nodeW.classList.add('docked');
-          nodeW.classList.remove('beat');
-        });
-        const beatIO = new IntersectionObserver((ens) => {
-          ens.forEach((en) => {
-            if (!en.isIntersecting) return;
-            const id = en.target.id || '';
-            if (armed && id !== lastBeat) {
-              nodeW.classList.remove('beat');
-              void nodeW.getBoundingClientRect(); // reinicia la animación
-              nodeW.classList.add('beat');
-            }
-            lastBeat = id;
-          });
-        }, { rootMargin: '-45% 0px -50% 0px' });
-        ['problema', 'solucion', 'calculadora', 'departamentos', 'fundae', 'subvenciones', 'diagnostico', 'faq', 'recursos'].forEach((id) => {
-          const s = document.getElementById(id);
-          if (s) beatIO.observe(s);
-        });
       }
 
       // ---------- D · Scrollytelling del método (sticky nativo) ----------
