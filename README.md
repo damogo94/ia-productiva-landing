@@ -19,7 +19,16 @@ Wordmark **Innovai** como componente SVG inline (`<symbol>`: variantes `wordmark
 "Innov" en Inter 500 + "aı" en Inter 700, con el punto de la ı sustituido por el **nodo**
 (cuadrado rotado 45° en el acento cian). Sistema de tokens **OKLCH** documentado en el
 `<style>` de `index.html` con los ratios WCAG verificados; el acento tiene presupuesto
-cerrado (nodo del logo, focus/active, cifras clave y CTA secundario).
+cerrado (nodo del logo, focus/active, cifras clave y CTA secundario) con una excepción
+consciente: la palabra clave del h1 del hero («con IA») en acento con glow.
+
+**Nacimiento del logo (capa viva):** al cargar, la constelación del hero ensambla el
+rombo de marca y lo "entrega" a la cabecera — el anillo vuela hasta la ı del wordmark y
+el nodo aterriza (`nodeArrive`). Después el nodo queda **vivo**: late al cruzar de
+sección y emite 4 micro-nodos al hover. El enjambre del hero **atrae** hacia el cursor
+(viraje a cian por cercanía) y, al bajar, se disuelve entregándose al caos de la escena
+01 del scrolly. Todo decorativo: sin JS o con `prefers-reduced-motion` el logo es
+estático y la página funciona igual.
 
 ## Formulario de contacto
 
