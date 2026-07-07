@@ -430,13 +430,13 @@
     .cell ul{margin-top:.8rem;display:grid;gap:.5rem}
     .cell li{display:flex;gap:.6rem;font-size:.875rem;color:var(--ink-600)}
     .cell li .node{margin-top:.5rem;width:5px;height:5px;background:var(--ink-500)}
-    .cell-feat{grid-area:feat;position:relative;background:var(--ink-950);color:var(--paper);border:0;padding:clamp(1.5rem,1.2rem + 1.5vw,2.25rem);overflow:visible}
+    .cell-feat{position:relative;background:var(--ink-950);color:var(--paper);border:0;padding:clamp(1.5rem,1.2rem + 1.5vw,2.25rem);overflow:visible}
     .cell-feat::before{content:'';position:absolute;top:-7px;left:2rem;width:14px;height:14px;background:var(--accent);transform:rotate(45deg)}
     .cell-feat h3{font-size:1.375rem}
     .cell-feat li{color:var(--ink-300)}
     .cell-feat li .node{background:var(--accent)}
     .cell-feat .tag{font-size:.6875rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
-    @media(min-width:900px){.cell-a{grid-area:a}.cell-b{grid-area:b}.cell-c{grid-area:c}.cell-d{grid-area:d}.cell-e{grid-area:e}}
+    @media(min-width:900px){.cell-feat{grid-area:feat}.cell-a{grid-area:a}.cell-b{grid-area:b}.cell-c{grid-area:c}.cell-d{grid-area:d}.cell-e{grid-area:e}}
 
     /* ============ 05 FUNDAE (portada 02) ============ */
     .fundae-grid{display:grid;gap:2.5rem}
